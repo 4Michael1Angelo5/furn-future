@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/furn-future/static/css/main.b100e6da.chunk.css",
+    "main.js": "/furn-future/static/js/main.7f2d866f.chunk.js",
+    "main.js.map": "/furn-future/static/js/main.7f2d866f.chunk.js.map",
+    "runtime-main.js": "/furn-future/static/js/runtime-main.467e271b.js",
+    "runtime-main.js.map": "/furn-future/static/js/runtime-main.467e271b.js.map",
+    "static/js/2.29e11103.chunk.js": "/furn-future/static/js/2.29e11103.chunk.js",
+    "static/js/2.29e11103.chunk.js.map": "/furn-future/static/js/2.29e11103.chunk.js.map",
+    "index.html": "/furn-future/index.html",
+    "precache-manifest.094e762142218a8dca78d34acf7dc837.js": "/furn-future/precache-manifest.094e762142218a8dca78d34acf7dc837.js",
+    "service-worker.js": "/furn-future/service-worker.js",
+    "static/css/main.b100e6da.chunk.css.map": "/furn-future/static/css/main.b100e6da.chunk.css.map",
+    "static/media/logo.svg": "/furn-future/static/media/logo.25bf045c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.467e271b.js",
+    "static/js/2.29e11103.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.7f2d866f.chunk.js"
+  ]
+}
