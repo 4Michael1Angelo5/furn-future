@@ -1,22 +1,500 @@
-.App {
-  text-align: center;
+
+
+/* -----------------------------------------------------FONTS---------------------------------------------------------------------- */
+
+@font-face {
+  font-family: minfont ;
+          src: url(shared/fonts/Titillium/TitilliumWeb-Regular.ttf)
+          
+  } 
+/* -----------------------------------------------------MAIN PAGE---------------------------------------------------------------------- */
+
+.landing-page{
+  height: 100vh;
+  background-image: url(https://cdn.trendir.com/wp-content/uploads/2019/04/industrial-lviing-room-2.jpg);
+  /* background-image: url(https://i.pinimg.com/originals/9b/8c/95/9b8c95541ab3aa5c974b790a08164a65.png); */
+  background-size: cover; 
+  margin-bottom: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
+.about-page{
+  height: 100vh;
+  background-image: url(https://i.pinimg.com/originals/9b/8c/95/9b8c95541ab3aa5c974b790a08164a65.png); 
+  background-image:url(https://i.pinimg.com/originals/82/2c/09/822c091e3ba10077b0715eb291fb2059.jpg);
+  background-size: cover; 
+  background-position: bottom;
+  background-color: white;
+  /* color:black; */
+  margin-bottom: 30px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.gallery-page{
+  height: 100vh;
+  margin-bottom: 30px;
+}
+
+.aws-sld__bullets{
+
+  z-index:1000;
+  bottom:40px !important
+}
+
+/* .gallery-page{
+
+  width:100% ; 
+  
+} */
+
+.aws-sld__container{
+
+  height: 100vh !important; 
+}
+
+@media only screen and (max-width: 600px) {
+  .landing-page {
+    background-position: 25% 50%;
+  }
+
+  .about-page {
+    background-position: 65% 50%;
+    background-size:auto
+  }
+}
+
+.logo{
+  width:50px; 
+  height:50px;
+  border:1px solid white; 
+  border-radius:5px;
+  background-size: cover;
+  background-image: url(https://www.iconsdb.com/icons/preview/white/tree-xxl.png)
+}
+
+#down
+{
+ position: absolute;
+ top:85vh;
+ /* position: relative; 
+ display:inline-block ; 
+ left: calc(50vw - 10px);
+ top:50vh ;  */
+ padding: 10px;
+ border-left:5px solid white; 
+ border-bottom:5px solid white;
+ transform: rotate(-45deg);
+}
+#down:hover
+{
+ cursor: pointer;
+
+ opacity: 0.8;
+}
+
+#down-about
+{
+ position: absolute;
+ top:calc(185vh + 30px);
+ padding: 10px;
+ border-left:5px solid white; 
+ border-bottom:5px solid white;
+ transform: rotate(-45deg);
+}
+#down-about:hover
+{
+ cursor: pointer;
+
+ opacity: 0.8;
+}
+
+#down-gallery
+{
+ position: absolute;
+ top:calc(285vh + 60px);
+ padding: 10px;
+ border-left:5px solid white; 
+ border-bottom:5px solid white;
+ transform: rotate(-45deg);
+ z-index:1000;
+}
+#down-gallery:hover
+{
+ cursor: pointer;
+
+ opacity: 0.8;
+}
+
+.nav-btn{
+  cursor: pointer;
+}
+
+.App{ 
+  color:white;
+  /* color: black; */
+  overflow: hidden;
+  /* font-family: minfont; */
+}
+
+.slogan-hook{
+  margin-top: 35px ;
+}
+
+@media (min-width: 992px){
+  .slogan-hook{
+    margin-top: 10px ;
+    font-size: 6vw;
+  }
+}
+.no-padding{
+  padding: 0px !important;
+}
+/* --------------------------------------------------------Awesome Slider -------------------------------------------------------------*/
+
+.aws-sld__content{
+  display:inherit !important; 
+  background-color: white !important;
+}
+
+/* ------------------------------------------------------------Buttons -------------------------------------------------------------*/
+.description-card{
+
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+/* -----------------------------------------------------------contact-page---------------------------------------------------------------------------- */
+
+.contact-page{
+  height:100% ;
+  min-height: 100vh ;
+  color: black ; 
+  margin-bottom: 30px;
+  background-color: rgb(237, 239, 240);
+}
+
+.send-btn{
+  color:black ;
+  background-color: #9090a0 ; 
+  padding: 10px 100px ;
+}
+/* -----------------------------------------------------------store-page---------------------------------------------------------------------------- */
+
+.store-page{
+  height: 100vh; 
+  margin-bottom: 30px;
+  color:black;
+  background-color: rgb(237, 239, 240);
+  /* display:flex; */
   align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.store-page-title{
+  color:black;
+  text-align: center;
+  /* position: absolute;
+  top: calc(300vh + 90px);
+  left: calc(50% - 47px); */
+}
+
+.store-icons{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: aquamarine;
+}
+
+
+.store-page h2{
+  background-color: white;
+  width: 100% ; 
+  /* border-bottom: 1px solid black ; */
+  display:flex;
+  margin-left : 10%;
+  justify-content: start ; 
+  align-items: center;
+  font-size: 120%;
+  /* margin-block-start: 0px;
+    margin-block-end: 0px; */
+ 
+}
+
+.store-page p {
+  padding: 0px 8px 0px 8px ;  
+  /* background-color:#ffffff; */
+  color:#454a53;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  
+
+
+
+}
+
+.store-content-container div{
+  padding-left:8px ; 
+  padding-right: 8px ; 
+}
+
+.store-content-step-description { 
+
+  padding: 11px 0px;
+  border-top:3px solid #7bb7e4;
+  border-radius: 6px ; 
+ 
+  overflow: hidden;
+  background-color:white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display:flex;
+  flex-wrap:wrap;
+  align-content: center;
+  justify-content: center;
+  
+}
+
+.catalouge-item{
+
+  padding-left: 5px !important; 
+  padding-right:5px !important; 
+}
+.inventory-container{
+
+  
+  object-fit: cover;
+  object-position: center;
+
+}
+
+.inventory-container h4{
+  font-size:18px ; 
+  font-weight: 400;
+}
+
+.inventory-container h5{
+  font-size: 16px ; 
+  font-weight: 200 ; 
+}
+
+.add-to-cart-btn{
+  color:black ;
+  background-color: #9090a0 ; 
+  padding: 5px 10px
+}
+
+.add-to-cart-btn:hover{
+  cursor: pointer;  
+}
+
+.store-item-preview:hover{
+  cursor: pointer;
+}
+
+/* -----------------------------------------------------------gallery-page---------------------------------------------------------------------------- */
+.aws-sld__wrapper{
+  height: calc(100vh + 30px) !important;
+}
+
+.gallery-frame{
+  border: 3px solid white ; 
+  background-position: center ; 
+  background-size: cover ; 
+}
+
+.gallery-frame >h1{
+  visibility: hidden; 
+  opacity: 0;
+  transition: visibility 0s, opacity .5s linear;
+ 
+}
+
+
+
+.gallery-frame:hover >h1{
+  display: flex !important;
+  visibility: visible;
+  opacity: 1;
+  
+}
+/* Sweep To Right */
+.hvr-sweep-to-right>h1 {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-sweep-to-right>h1::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(171, 176, 177, 0.44);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-sweep-to-right:hover , .hvr-sweep-to-right:focus , .hvr-sweep-to-right:active  {
   color: white;
 }
-
-.App-link {
-  color: #09d3ac;
+.hvr-sweep-to-right:hover>h1:before , .hvr-sweep-to-right:focus>h1:before , .hvr-sweep-to-right:active>h1:before  {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
 }
+
+.gallery-header{
+  position: absolute;
+  /* top: calc(200vh + 47px); */
+  top :-14px ; 
+  left: 50%;
+  margin-left: -72px ;  
+  z-index: 1;
+  color: black;
+  border-bottom: 1px solid white;
+  background-color: white; 
+  /* background-image: url("./components/notch-background-white.png");
+  background-size: stretch; 
+  background-position: center */
+}
+
+.gallery-header::before {
+  content: ".";
+  width:13px ; 
+  border-left: 1px solid white;
+  color: rgba(255, 255, 255, 0);
+  display: inline-block;
+  transform-origin: bottom;
+  transform: rotate(-18deg);
+  background-color: white;
+
+}
+
+.gallery-header::after {
+  content: ".";
+  width: 13px ;
+  padding-top:1px;
+  border-right: 1px solid white;
+  color: rgba(255, 255, 255, 0);
+  display: inline-block;
+  transform: rotate(18deg);
+  transform-origin: bottom;
+  background-color: white;
+}
+
+
+
+
+
+
+/*------------------------------------------------ Side Navigation/ Dropdown-Menu------------------------------------------------- */
+/* color of filter tab */
+
+.filter-tab{
+  background-color: rgba(40, 36, 36, 0.49019607843137253) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed; 
+  width:50px; 
+  height:50px;
+  border:1px solid white;
+  /* background: linear-gradient( black, transparent) ; */
+  background:black;
+  border-radius:5px;
+  /* left: 36px;  original */
+  left: 15px ; 
+  top: 15px;
+ 
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+a {
+  color: #cececf;
+}
+
+
+
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background:rgba(8, 8, 8, 0.5803921568627451);
+  /* background: rgba(255, 255, 255, 0.5803921568627451); */
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  backdrop-filter: blur(4px);
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+.bm-item-list>div:hover{
+  cursor: pointer;
+}
+.overlayMod{
+  position: relative; 
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+
+  background: rgba(0, 0, 0, 0.3);
+}
+
+
+
