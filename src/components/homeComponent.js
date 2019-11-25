@@ -3,8 +3,7 @@ import  {Navbar} from 'reactstrap';
 import { slide as Menu } from 'react-burger-menu';
 import { ScrollTo } from "react-scroll-to";
 import About from './aboutComponent';
-// import Gallery from './galleryComponent';
-// import Store from './storeComponent';
+import Store from './storeComponent';
 // import Contact from './contactComponent';
  import Gallery from './galleryComponent'
 import {GALLERY} from '../shared/galleryContent';
@@ -157,13 +156,13 @@ render(){
          {/* -----------------------------------------------------STORE PAGE------------------------------------------------- */}
        
 
-        {/* <Store isUserInteractingWithStore = {this.state.isUserInteractingWithStore} handleScrollableFocus = {this.handleScrollableFocus}/> */}
+        <Store isUserInteractingWithStore = {this.state.isUserInteractingWithStore} handleScrollableFocus = {this.handleScrollableFocus}/>
 
-            {/* <ScrollTo>
+            <ScrollTo>
             {({ scroll }) => (
                    <div id = "down-store" onClick ={() => scroll({ x: 0, y: window.innerHeight*3 +90 ,smooth: true })}/>
                    )}
-            </ScrollTo> */}
+            </ScrollTo>
         
          {/* -----------------------------------------------------CONTACT PAGE------------------------------------------------- */}
        

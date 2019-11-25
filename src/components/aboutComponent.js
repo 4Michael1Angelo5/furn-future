@@ -13,7 +13,7 @@ class About extends React.Component{
                     <div className = "row d-flex justify-sm-content-center justify-content-lg-start">
 
 
-                        <p className ="col-12 col-lg-7 mt-4 mt-lg-4 ml-5">
+                        <p className ="col-12 col-lg-7 mt-4 mt-lg-4 ml-lg-5">
                             We love couches! We love when a couch is a fresh new play on an old theme, an homage to a classic, a truly original design or even a completely unassuming family room design that quietly does its job year after year like a well-loved hoodie.
 
                             We obsessively cultivate a diverse selection of sofas in every design genre. Pick one of our thoughtfully designed styles or work with us to come up with a new variation. We are custom builders in the truest sense of the word. Custom elsewhere can mean you get to choose blue instead of gray. At COUCH it means you design a sofa in your exact size, style and comfort specifications. If you like one of our styles but need it a little taller so it's easier to get out of, come chat.  If you have an awkward nook in your basement that you need to fill with a sectional made at exact dimensions, we're a sure bet. We are couch experts who really know our stuff!

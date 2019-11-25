@@ -37,16 +37,15 @@ class Slider extends React.Component{
   render(){
     return(
       <AwesomeSlider cssModule={AwsSliderStyles}>
-
-      <div>
-      <Slide content = {this.state.content}/>
-      </div>
-      <div>
-      <Slide content = {this.state.content}/>
-      </div>
-      <div>
-      <Slide content = {this.state.content}/>
-      </div>
+        <div>
+        <Slide content = {this.state.content}/>
+        </div>
+        <div>
+        <Slide content = {this.state.content}/>
+        </div>
+        <div>
+        <Slide content = {this.state.content}/>
+        </div>
       </AwesomeSlider>
     );
   }
@@ -59,14 +58,8 @@ class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        //  activeIndex: 0,
          content : GALLERY 
     };
-    // this.next = this.next.bind(this);
-    // this.previous = this.previous.bind(this);
-    // this.goToIndex = this.goToIndex.bind(this);
-    // this.onExiting = this.onExiting.bind(this);
-    // this.onExited = this.onExited.bind(this);
   }
 
 
@@ -78,36 +71,16 @@ class Gallery extends Component {
     this.animating = false;
   }
 
-//   next() {
-//     if (this.animating) return;
-//     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
-//     this.setState({ activeIndex: nextIndex });
-//   }
-
-//   previous() {
-//     if (this.animating) return;
-//     const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
-//     this.setState({ activeIndex: nextIndex });
-//   }
-
-//   goToIndex(newIndex) {
-//     if (this.animating) return;
-//     this.setState({ activeIndex: newIndex });
-//   } 
-
   render() {
-    // const { activeIndex } = this.state;
+   
 
      items.map((item,index) => {
       return (
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={item.src}
-        >
-          
-          <Slide content = {this.state.content} key = {index}/>
-          {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
+          key={item.src}>
+            <Slide content = {this.state.content} key = {index}/>
         </CarouselItem>
       );
     });
