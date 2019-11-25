@@ -4,11 +4,11 @@ import { slide as Menu } from 'react-burger-menu';
 import { ScrollTo } from "react-scroll-to";
 import About from './aboutComponent';
 import Store from './storeComponent';
-// import Contact from './contactComponent';
- import Gallery from './galleryComponent'
+import Contact from './contactComponent';
+import Gallery from './galleryComponent'
 import {GALLERY} from '../shared/galleryContent';
 import tree from '../shared/icons/tree.png';
-// import LazyLoad from './lazyloadTestComponent';
+
 
 class HamburgerMenu extends React.Component {
     showSettings (event) {
@@ -166,9 +166,9 @@ render(){
         
          {/* -----------------------------------------------------CONTACT PAGE------------------------------------------------- */}
        
-        {/* {this.state.isUserInteractingWithStore?null:
+        {this.state.isUserInteractingWithStore?null:
         <Contact/>
-        } */}
+        }
      
         
 
