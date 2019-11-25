@@ -93,7 +93,7 @@ class Gallery extends Component {
 //   goToIndex(newIndex) {
 //     if (this.animating) return;
 //     this.setState({ activeIndex: newIndex });
-//   }
+//   } this is a test to see if writing something so that i can commit will display changes on website
 
   render() {
     // const { activeIndex } = this.state;
