@@ -30,7 +30,7 @@ class Frame extends React.Component{
             
             <div  className =  {grid}>
                 <div  onClick = {this.handleClick} className = " lozad hvr-sweep-to-right d-flex justify-content-center align-items-end gallery-frame"
-                      data-background-image= {this.props.item.image} style = {{
+                      data-background-image= {process.env.PUBLIC_URL + this.props.item.image} style = {{
                                     width:  width,
                                     height:  height, 
                                     backgroundColor: "white", 
@@ -61,7 +61,7 @@ render(){
                                     width:  width,
                                     height:  height, 
                                     backgroundColor: "white", 
-                                    backgroundImage:  `url(${this.props.item.image})`,
+                                    backgroundImage:  `url(${process.env.PUBLIC_URL + this.props.item.image})`,
                                 }}>
                        
                         <h1  className = " w-100  justify-content-center align-items-center ">
@@ -91,7 +91,7 @@ class ActiveFrameDesciption extends React.Component{
                     </p>
                     </div>
                     <div className="brk-btn" onClick = {this.props.returnView}>
-                        fuck!
+                        back
                     </div> 
                     
             </div>
