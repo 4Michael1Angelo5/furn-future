@@ -8,7 +8,7 @@ export const GALLERY = [
     { 
     id: 1,
     title:'Grey Table',
-    image: '/assets/images/greytable.jpg',
+    image: '/assets/images/greyTable.jpg',
     description:'Awesome table I made.'                    
     },
     { 
