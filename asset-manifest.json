@@ -1,27 +1,26 @@
 {
   "files": {
-    "main.css": "/furn-future/static/css/main.28095c26.chunk.css",
-    "main.js": "/furn-future/static/js/main.15e5a712.chunk.js",
-    "main.js.map": "/furn-future/static/js/main.15e5a712.chunk.js.map",
+    "main.css": "/furn-future/static/css/main.6109c983.chunk.css",
+    "main.js": "/furn-future/static/js/main.418ccd07.chunk.js",
+    "main.js.map": "/furn-future/static/js/main.418ccd07.chunk.js.map",
     "runtime-main.js": "/furn-future/static/js/runtime-main.467e271b.js",
     "runtime-main.js.map": "/furn-future/static/js/runtime-main.467e271b.js.map",
-    "static/css/2.0624914a.chunk.css": "/furn-future/static/css/2.0624914a.chunk.css",
-    "static/js/2.3158c749.chunk.js": "/furn-future/static/js/2.3158c749.chunk.js",
-    "static/js/2.3158c749.chunk.js.map": "/furn-future/static/js/2.3158c749.chunk.js.map",
+    "static/css/2.c6fda9f8.chunk.css": "/furn-future/static/css/2.c6fda9f8.chunk.css",
+    "static/js/2.46638f3f.chunk.js": "/furn-future/static/js/2.46638f3f.chunk.js",
+    "static/js/2.46638f3f.chunk.js.map": "/furn-future/static/js/2.46638f3f.chunk.js.map",
     "index.html": "/furn-future/index.html",
-    "precache-manifest.dc9ab10ece0ac73171fc459f63a5f75b.js": "/furn-future/precache-manifest.dc9ab10ece0ac73171fc459f63a5f75b.js",
+    "precache-manifest.5f1098b96a89d788cfbc82944ec428e9.js": "/furn-future/precache-manifest.5f1098b96a89d788cfbc82944ec428e9.js",
     "service-worker.js": "/furn-future/service-worker.js",
-    "static/css/2.0624914a.chunk.css.map": "/furn-future/static/css/2.0624914a.chunk.css.map",
-    "static/css/main.28095c26.chunk.css.map": "/furn-future/static/css/main.28095c26.chunk.css.map",
+    "static/css/2.c6fda9f8.chunk.css.map": "/furn-future/static/css/2.c6fda9f8.chunk.css.map",
+    "static/css/main.6109c983.chunk.css.map": "/furn-future/static/css/main.6109c983.chunk.css.map",
     "static/media/App.css": "/furn-future/static/media/TitilliumWeb-Regular.ed1d014b.ttf",
-    "static/media/logo.svg": "/furn-future/static/media/logo.25bf045c.svg",
     "static/media/tree.png": "/furn-future/static/media/tree.e15c5526.png"
   },
   "entrypoints": [
     "static/js/runtime-main.467e271b.js",
-    "static/css/2.0624914a.chunk.css",
-    "static/js/2.3158c749.chunk.js",
-    "static/css/main.28095c26.chunk.css",
-    "static/js/main.15e5a712.chunk.js"
+    "static/css/2.c6fda9f8.chunk.css",
+    "static/js/2.46638f3f.chunk.js",
+    "static/css/main.6109c983.chunk.css",
+    "static/js/main.418ccd07.chunk.js"
   ]
 }
