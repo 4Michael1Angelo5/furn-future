@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/furn-future/static/css/main.c10baba9.chunk.css",
-    "main.js": "/furn-future/static/js/main.e1960bcb.chunk.js",
-    "main.js.map": "/furn-future/static/js/main.e1960bcb.chunk.js.map",
+    "main.js": "/furn-future/static/js/main.addcf389.chunk.js",
+    "main.js.map": "/furn-future/static/js/main.addcf389.chunk.js.map",
     "runtime-main.js": "/furn-future/static/js/runtime-main.467e271b.js",
     "runtime-main.js.map": "/furn-future/static/js/runtime-main.467e271b.js.map",
     "static/css/2.6f8a8ef9.chunk.css": "/furn-future/static/css/2.6f8a8ef9.chunk.css",
-    "static/js/2.1c57969a.chunk.js": "/furn-future/static/js/2.1c57969a.chunk.js",
-    "static/js/2.1c57969a.chunk.js.map": "/furn-future/static/js/2.1c57969a.chunk.js.map",
+    "static/js/2.0396bdd5.chunk.js": "/furn-future/static/js/2.0396bdd5.chunk.js",
+    "static/js/2.0396bdd5.chunk.js.map": "/furn-future/static/js/2.0396bdd5.chunk.js.map",
     "index.html": "/furn-future/index.html",
-    "precache-manifest.6fc451241251acb058c6c1ff6038c5bf.js": "/furn-future/precache-manifest.6fc451241251acb058c6c1ff6038c5bf.js",
+    "precache-manifest.2b5162fb855830c32cade909471f7ac6.js": "/furn-future/precache-manifest.2b5162fb855830c32cade909471f7ac6.js",
     "service-worker.js": "/furn-future/service-worker.js",
     "static/css/2.6f8a8ef9.chunk.css.map": "/furn-future/static/css/2.6f8a8ef9.chunk.css.map",
     "static/css/main.c10baba9.chunk.css.map": "/furn-future/static/css/main.c10baba9.chunk.css.map",
@@ -24,8 +24,8 @@
   "entrypoints": [
     "static/js/runtime-main.467e271b.js",
     "static/css/2.6f8a8ef9.chunk.css",
-    "static/js/2.1c57969a.chunk.js",
+    "static/js/2.0396bdd5.chunk.js",
     "static/css/main.c10baba9.chunk.css",
-    "static/js/main.e1960bcb.chunk.js"
+    "static/js/main.addcf389.chunk.js"
   ]
 }
