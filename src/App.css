@@ -34,22 +34,7 @@
   margin-bottom: 30px;
 }
 
-.aws-sld__bullets{
 
-  z-index:1000;
-  bottom:40px !important
-}
-
-/* .gallery-page{
-
-  width:100% ; 
-  
-} */
-
-.aws-sld__container{
-
-  height: 100vh !important; 
-}
 
 @media only screen and (max-width: 600px) {
   .landing-page {
@@ -112,8 +97,8 @@
  position: absolute;
  top:calc(285vh + 60px);
  padding: 10px;
- border-left:5px solid white; 
- border-bottom:5px solid white;
+ border-left:5px solid rgb(71, 64, 64); 
+ border-bottom:5px solid rgb(71, 64, 64);
  transform: rotate(-45deg);
  z-index:1000;
 }
@@ -147,12 +132,6 @@
 }
 .no-padding{
   padding: 0px !important;
-}
-/* --------------------------------------------------------Awesome Slider -------------------------------------------------------------*/
-
-.aws-sld__content{
-  display:inherit !important; 
-  background-color: white !important;
 }
 
 /* ------------------------------------------------------------Buttons -------------------------------------------------------------*/
@@ -287,10 +266,30 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
 }
 
-/* -----------------------------------------------------------gallery-page---------------------------------------------------------------------------- */
-.aws-sld__wrapper{
-  height: calc(100vh + 30px) !important;
+/* --------------------------------------------------------begin Awesome Slider -------------------------------------------------------------*/
+
+.awssld__content{
+  background-color: white !important;
+  display:inherit !important;
 }
+
+.awssld__bullets{
+  z-index:100;
+  width:78px !important;
+  bottom:40px !important;
+  margin-left: calc( 50vw - 39px);
+}
+
+.awssld{
+  height: 100vh;
+} 
+
+
+/* -------------------------------------------------------- end Awesome Slider -------------------------------------------------------------*/
+
+/* -----------------------------------------------------------gallery-page---------------------------------------------------------------------------- */
+
+
 
 .gallery-frame{
   border: 3px solid white ; 
@@ -413,7 +412,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height:50px;
   border:1px solid white;
   /* background: linear-gradient( black, transparent) ; */
-  background:black;
+  /* background:black; */
   border-radius:5px;
   /* left: 36px;  original */
   left: 15px ; 
