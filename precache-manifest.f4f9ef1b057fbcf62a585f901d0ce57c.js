@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1b33dd91c917726b54574a4b70095cfc",
+    "revision": "56037daf04becd9bcabc22c19aefe4c3",
     "url": "/furn-future/index.html"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/furn-future/static/css/2.6f8a8ef9.chunk.css"
   },
   {
-    "revision": "461ae11a7ab933e82e5a",
-    "url": "/furn-future/static/css/main.c10baba9.chunk.css"
+    "revision": "f46d4226ba2214f3cdb2",
+    "url": "/furn-future/static/css/main.baee4e95.chunk.css"
   },
   {
     "revision": "abc71db9cb7b278653a6",
     "url": "/furn-future/static/js/2.0396bdd5.chunk.js"
   },
   {
-    "revision": "461ae11a7ab933e82e5a",
+    "revision": "f46d4226ba2214f3cdb2",
     "url": "/furn-future/static/js/main.addcf389.chunk.js"
   },
   {
