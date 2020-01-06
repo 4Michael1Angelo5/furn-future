@@ -329,7 +329,7 @@ class CustomOrderInstructions extends React.Component{
             <div className = "store-content-step-description"
             style = {{
                 maxHeight: height,  
-                height:"100%",
+                // height:"100%",
                 marginBottom: margin,                               
             }} >
 
