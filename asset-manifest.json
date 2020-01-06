@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/furn-future/static/css/main.baee4e95.chunk.css",
+    "main.css": "/furn-future/static/css/main.bf80032f.chunk.css",
     "main.js": "/furn-future/static/js/main.addcf389.chunk.js",
     "main.js.map": "/furn-future/static/js/main.addcf389.chunk.js.map",
     "runtime-main.js": "/furn-future/static/js/runtime-main.467e271b.js",
@@ -9,10 +9,10 @@
     "static/js/2.0396bdd5.chunk.js": "/furn-future/static/js/2.0396bdd5.chunk.js",
     "static/js/2.0396bdd5.chunk.js.map": "/furn-future/static/js/2.0396bdd5.chunk.js.map",
     "index.html": "/furn-future/index.html",
-    "precache-manifest.f4f9ef1b057fbcf62a585f901d0ce57c.js": "/furn-future/precache-manifest.f4f9ef1b057fbcf62a585f901d0ce57c.js",
+    "precache-manifest.d4c086050a59abad8bab9a92591dc78c.js": "/furn-future/precache-manifest.d4c086050a59abad8bab9a92591dc78c.js",
     "service-worker.js": "/furn-future/service-worker.js",
     "static/css/2.6f8a8ef9.chunk.css.map": "/furn-future/static/css/2.6f8a8ef9.chunk.css.map",
-    "static/css/main.baee4e95.chunk.css.map": "/furn-future/static/css/main.baee4e95.chunk.css.map",
+    "static/css/main.bf80032f.chunk.css.map": "/furn-future/static/css/main.bf80032f.chunk.css.map",
     "static/media/App.css": "/furn-future/static/media/TitilliumWeb-Regular.ed1d014b.ttf",
     "static/media/chair.png": "/furn-future/static/media/chair.4d82827b.png",
     "static/media/compass.png": "/furn-future/static/media/compass.31a1c94a.png",
@@ -25,7 +25,7 @@
     "static/js/runtime-main.467e271b.js",
     "static/css/2.6f8a8ef9.chunk.css",
     "static/js/2.0396bdd5.chunk.js",
-    "static/css/main.baee4e95.chunk.css",
+    "static/css/main.bf80032f.chunk.css",
     "static/js/main.addcf389.chunk.js"
   ]
 }
