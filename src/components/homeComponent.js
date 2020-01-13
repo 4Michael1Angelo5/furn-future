@@ -122,7 +122,7 @@ render(){
                 <div className = "row d-flex justify-content-center">
                     <ScrollTo>
                     {({ scroll }) => (
-                    <div id = "down" onClick ={() => scroll({ ref: this.aboutPage, x: 0, y: window.innerHeight+30 ,smooth: true })}/>
+                    <div className="bouncey-dwn-btn" id = "down" onClick ={() => scroll({ ref: this.aboutPage, x: 0, y: window.innerHeight+30 ,smooth: true })}/>
                     )}
                     </ScrollTo>
                 </div>

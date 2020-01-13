@@ -6,10 +6,12 @@ class About extends React.Component{
     render(){
         return(
             <div ref = {this.aboutPage} className = "about-page" >
+                <div className = "up-btn"></div>
             <div className = "container sm-auto">
                 <div className = "row d-flex justify-content-center">
                     <h1>About</h1>
                 </div>
+                
                     <div className = "row d-flex justify-sm-content-center justify-content-lg-start">
 
 
@@ -27,7 +29,7 @@ class About extends React.Component{
                 <div className = "row d-flex justify-content-center">
                     <ScrollTo>
                     {({ scroll }) => (
-                    <div id = "down-about" onClick ={() => scroll({ ref: this.galleryPage, x: 0, y: window.innerHeight*2 +60 ,smooth: true })}/>
+                    <div className = "bouncey-dwn-btn" id = "down-about" onClick ={() => scroll({ ref: this.galleryPage, x: 0, y: window.innerHeight*2 +60 ,smooth: true })}/>
                     )}
                     </ScrollTo>
                 </div>

@@ -56,8 +56,38 @@
   background-image: url(https://www.iconsdb.com/icons/preview/white/tree-xxl.png)
 }
 
+/* Up-button */
+
+.up-btn{
+  position: absolute;
+  left:91vw;
+  top:calc( 100vh + 60px);
+  padding:10px;
+  border-right:2.5px solid white;
+  border-top:2.5px solid white;
+  transform:rotate(-45deg); 
+}
+
+
+/* Animations for drop-down button */
+
+.bouncey-dwn-btn {
+  animation-name: bounce-4;
+  animation-timing-function: ease;
+}
+
+@keyframes bounce-4 {
+  0%   { transform: rotate(-45deg) scale(1,1)    translateX(0) ; }
+  10%  { transform: rotate(-45deg) scale(1.1,1.1) translateX(0); }
+  30%  { transform: rotate(-45deg) scale(1.2,1.2) translateX(25px) translateY(-25px); }
+  50%  { transform: rotate(-45deg) scale(1.1,1.1) translateX(0); }
+  57%  { transform: rotate(-45deg) scale(1,1) translateX(2px) translateY(-2px);}
+  100% { transform: rotate(-45deg) scale(1,1)    translateX(0); }
+}
+
 #down
 {
+ 
  position: absolute;
  top:85vh;
  /* position: relative; 
@@ -67,7 +97,11 @@
  padding: 10px;
  border-left:5px solid white; 
  border-bottom:5px solid white;
- transform: rotate(-45deg);
+ /* transform: rotate(-45deg);
+ align-self: flex-end; */
+ /* transform-origin: bottom; */
+ animation-duration: 2s;
+ animation-iteration-count: infinite;
 }
 #down:hover
 {
@@ -219,7 +253,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 11px 0px;
   border-top:3px solid #7bb7e4;
   border-radius: 6px ; 
- 
   overflow: hidden;
   background-color:white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

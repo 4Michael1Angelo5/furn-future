@@ -329,7 +329,7 @@ class CustomOrderInstructions extends React.Component{
             <div className = "store-content-step-description"
             style = {{
                 maxHeight: height,  
-                // height:"100%",
+                height:"100%",
                 marginBottom: margin,                               
             }} >
 
@@ -410,14 +410,22 @@ class Store extends React.Component{
             viewCatalouge:false ,  
             viewProduct:false , 
             activeItemId : Number ,
-            orientation:""
+            orientation:"",
+            swiped: false
+    
         }
     this.renderProductView =this.renderProductView.bind(this);
     this.backToCatalouge =this.backToCatalouge.bind(this);
     this.handleView = this.handleView.bind(this);
     this.handleOrientation = this.handleOrientation.bind(this);
     this.revertView = this.revertView.bind(this);
+    // swipe left to right to back
 
+    this._onTouchStart = this._onTouchStart.bind(this);
+    this._onTouchMove = this._onTouchMove.bind(this);
+    this._onTouchEnd = this._onTouchEnd.bind(this);
+    this._swipe = {};
+    this.minDistance = 50;
 }
 
 
@@ -431,14 +439,12 @@ renderProductView(e,productID){
 backToCatalouge(){
     this.setState({viewProduct:false});
     return this.props.handleScrollableFocus()
-    // return () => scrollTo({ x:0,y:window.innerHeight*3+90 ,smooth: true })
 }
 
 revertView(){
     
     this.setState({viewCatalouge:false});
     this.setState({viewCustom:false});
-    // scrollTo({ x:0,y:window.innerHeight*3+90 ,smooth: true });\
     window.scrollTo(0,window.innerHeight*3+90)
     return this.props.handleScrollableFocus(this.props.isUserInteractingWithStore);
     
@@ -462,6 +468,34 @@ handleOrientation(){
          this.setState({orientation:"portrait"})
     }
 }
+
+// swipe left to right to go back
+
+_onTouchStart(e) {
+    const touch = e.touches[0];
+    this._swipe = { x: touch.clientX };
+    this.setState({ swiped: false });
+  }
+
+  _onTouchMove(e) {
+    if (e.changedTouches && e.changedTouches.length) {
+      const touch = e.changedTouches[0];
+      this._swipe.swiping = true;
+    }
+  }
+
+  _onTouchEnd(e) {
+    const touch = e.changedTouches[0];
+    const absX = (touch.clientX - this._swipe.x);
+    if (this._swipe.swiping && absX > this.minDistance ) {
+      this.props.onSwiped && this.props.onSwiped();
+      this.setState({ swiped: true });
+    //    window.alert("you just swiped 50px")
+     this.state.viewProduct===true?this.backToCatalouge():this.revertView()
+    }
+    this._swipe = {};
+  }
+
 componentWillMount(){
     this.handleOrientation()
 }
@@ -476,6 +510,11 @@ render(){
     var grid = this.state.orientation ==="landscape"? "col-4" : "col-12" ;
     return(
         <div className = "store-page"
+            onTouchStart = {this._onTouchStart}
+            onTouchMove =  {this._onTouchMove}
+            onTouchEnd = {this._onTouchEnd}
+
+
         style = {this.state.viewCatalouge===true? {minHeight:"100vh", height:"100%"}:{height:"100vh"}}>
             <h1 className= "store-page-title">Store</h1>
                <div className = "container-fluid"
@@ -504,18 +543,11 @@ render(){
                {
                    (this.state.viewCatalouge ===true || this.state.viewCustom ===true)?
 
-                
-                //  <ScrollTo >
-                     
-                //   {({ scrollTo }) => (
+        
                          <div onClick = {this.state.viewProduct ===true? this.backToCatalouge : this.revertView } className="brk-btn store-back-btn"
                          style = {this.state.viewCatalouge?{top:"-10px"}:{top:"10px"}}>
                              back
-                     </div>
-                 
-                //  )}
-                //   </ScrollTo> 
-                
+                     </div>                
                 :
                 null
                 }
