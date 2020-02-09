@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/furn-future/static/css/main.4d0e7add.chunk.css",
-    "main.js": "/furn-future/static/js/main.2d52c939.chunk.js",
-    "main.js.map": "/furn-future/static/js/main.2d52c939.chunk.js.map",
+    "main.css": "/furn-future/static/css/main.31f6ba35.chunk.css",
+    "main.js": "/furn-future/static/js/main.57914183.chunk.js",
+    "main.js.map": "/furn-future/static/js/main.57914183.chunk.js.map",
     "runtime-main.js": "/furn-future/static/js/runtime-main.467e271b.js",
     "runtime-main.js.map": "/furn-future/static/js/runtime-main.467e271b.js.map",
-    "static/css/2.6f8a8ef9.chunk.css": "/furn-future/static/css/2.6f8a8ef9.chunk.css",
-    "static/js/2.8ee94ebe.chunk.js": "/furn-future/static/js/2.8ee94ebe.chunk.js",
-    "static/js/2.8ee94ebe.chunk.js.map": "/furn-future/static/js/2.8ee94ebe.chunk.js.map",
+    "static/css/2.c6fda9f8.chunk.css": "/furn-future/static/css/2.c6fda9f8.chunk.css",
+    "static/js/2.218fdaa8.chunk.js": "/furn-future/static/js/2.218fdaa8.chunk.js",
+    "static/js/2.218fdaa8.chunk.js.map": "/furn-future/static/js/2.218fdaa8.chunk.js.map",
     "index.html": "/furn-future/index.html",
-    "precache-manifest.ba2762db0afeea299cb0e7b76702cd4c.js": "/furn-future/precache-manifest.ba2762db0afeea299cb0e7b76702cd4c.js",
+    "precache-manifest.bdefb6f081aaa491cbb5356d01383f52.js": "/furn-future/precache-manifest.bdefb6f081aaa491cbb5356d01383f52.js",
     "service-worker.js": "/furn-future/service-worker.js",
-    "static/css/2.6f8a8ef9.chunk.css.map": "/furn-future/static/css/2.6f8a8ef9.chunk.css.map",
-    "static/css/main.4d0e7add.chunk.css.map": "/furn-future/static/css/main.4d0e7add.chunk.css.map",
+    "static/css/2.c6fda9f8.chunk.css.map": "/furn-future/static/css/2.c6fda9f8.chunk.css.map",
+    "static/css/main.31f6ba35.chunk.css.map": "/furn-future/static/css/main.31f6ba35.chunk.css.map",
     "static/media/App.css": "/furn-future/static/media/TitilliumWeb-Regular.ed1d014b.ttf",
+    "static/media/cart.png": "/furn-future/static/media/cart.46ea0b0a.png",
     "static/media/chair.png": "/furn-future/static/media/chair.4d82827b.png",
     "static/media/compass.png": "/furn-future/static/media/compass.31a1c94a.png",
     "static/media/conversation.png": "/furn-future/static/media/conversation.20555920.png",
@@ -23,9 +24,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.467e271b.js",
-    "static/css/2.6f8a8ef9.chunk.css",
-    "static/js/2.8ee94ebe.chunk.js",
-    "static/css/main.4d0e7add.chunk.css",
-    "static/js/main.2d52c939.chunk.js"
+    "static/css/2.c6fda9f8.chunk.css",
+    "static/js/2.218fdaa8.chunk.js",
+    "static/css/main.31f6ba35.chunk.css",
+    "static/js/main.57914183.chunk.js"
   ]
 }
