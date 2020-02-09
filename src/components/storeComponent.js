@@ -18,7 +18,7 @@ const storeContent = [
     },
     {
         icon: deal,
-        instructions:"Contract. You send a request, I offer a quote , and we strike a deal ", 
+        instructions:"Contract. You send a request, I offer a quote and we strike a deal ", 
         link:""
         },
     {
@@ -339,22 +339,27 @@ class CustomOrderInstructions extends React.Component{
     render(){
         var height = this.props.orientation ==="landscape"? "65vh" : "25vh" ; 
         var margin = this.props.orientation ==="landscape"? "0px" : "2vh" ; 
+        var iconPosition = this.props.orientation ==="landscape"? "28%" : "5%";
     
         return(
             
             <div className = "store-content-step-description"
             style = {{
-                // maxHeight: height,  
-                height: height,
+                maxHeight: height,  
+                height: "100%",
                 marginBottom: margin,                               
             }} >
-<div className = "row ">
+                <div className = "row ">
                 {this.props.orientation==="landscape"? <h2 className = "col-12">{`Step ${this.props.index+1}`}</h2>:null}
                     
                 
-                    <div className = {this.props.orientation ==="landscape"?"col-12 d-flex justify-content-center":"col-4"}>
+                    <div className = {this.props.orientation ==="landscape"?"col-12 ":"col-4"}>
                         {this.props.orientation==="landscape"? null: <h2>{`Step ${this.props.index+1}`}</h2>}
-                        <img className = "store-icons rounded-circle" width = {this.props.orientation==="landscape"?"40%":"100%"}src = {this.props.item.icon} alt={this.props.item.icon}></img>
+                        <img className = "store-icons rounded-circle" width = {this.props.orientation==="landscape"?"40%":"100%"}src = {this.props.item.icon} alt={this.props.item.icon}
+                        style={{
+                            position:"relative",
+                            left:iconPosition
+                        }}/>
                     </div> 
                     <div className = {this.props.orientation ==="landscape"? "col-12" :"col-8 d-flex align-items-center"}>   
                         <p>

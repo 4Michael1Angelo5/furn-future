@@ -8,6 +8,7 @@ import Store from './storeComponent';
 import Contact from './contactComponent';
 import Gallery from './galleryComponent'
 import {GALLERY} from '../shared/galleryContent';
+
 import tree from '../shared/icons/tree.png';
 import cart from '../shared/icons/cart.png'
 
@@ -179,7 +180,8 @@ render(){
         {this.state.isUserInteractingWithStore?null:
         <Contact/>
         }
-     
+
+       
         
 
         </React.Fragment>
