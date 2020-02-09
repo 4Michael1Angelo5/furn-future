@@ -337,21 +337,21 @@ class ShopCatalouge extends React.Component{
 class CustomOrderInstructions extends React.Component{
   
     render(){
-        var height = this.props.orientation ==="landscape"? "75vh" : "25vh" ; 
+        var height = this.props.orientation ==="landscape"? "65vh" : "25vh" ; 
         var margin = this.props.orientation ==="landscape"? "0px" : "2vh" ; 
     
         return(
             
             <div className = "store-content-step-description"
             style = {{
-                maxHeight: height,  
-                height:"100%",
+                // maxHeight: height,  
+                height: height,
                 marginBottom: margin,                               
             }} >
-
-                {this.props.orientation==="landscape"? <h2>{`Step ${this.props.index+1}`}</h2>:null}
+<div className = "row ">
+                {this.props.orientation==="landscape"? <h2 className = "col-12">{`Step ${this.props.index+1}`}</h2>:null}
                     
-                <div className = "row ">
+                
                     <div className = {this.props.orientation ==="landscape"?"col-12 d-flex justify-content-center":"col-4"}>
                         {this.props.orientation==="landscape"? null: <h2>{`Step ${this.props.index+1}`}</h2>}
                         <img className = "store-icons rounded-circle" width = {this.props.orientation==="landscape"?"40%":"100%"}src = {this.props.item.icon} alt={this.props.item.icon}></img>
@@ -550,7 +550,10 @@ render(){
 
 
         style = {this.state.viewCatalouge===true? {minHeight:"100vh", height:"100%", marginBottom:"0px"}:{height:"100vh",marginBottom:"0px"}}>
+            
             <h1 className= "store-page-title">Store</h1>
+                
+              
                <div className = "container-fluid"
             //    style = {{paddingTop:"80px"}}
                >   
