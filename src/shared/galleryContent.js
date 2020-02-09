@@ -1,15 +1,15 @@
 export const GALLERY = [
     { 
     id: 0,
-    title:'Walk on The Beach',
-    image: '/assets/images/aboutPic.jpg',
-    description:'Walk on the Beach with my dog Moch on a simple mission to enjoy life and make great custom wooden furniture'                    
+    title:'Grey Table',
+    image: '/assets/images/greyTable.jpg',
+    description:'Awesome table I made.'
     },
     { 
     id: 1,
-    title:'Grey Table',
-    image: '/assets/images/greyTable.jpg',
-    description:'Awesome table I made.'                    
+    title:'Walk on The Beach',
+    image: '/assets/images/aboutPic.jpg',
+    description:'Walk on the Beach with my dog Moch on a simple mission to enjoy life and make great custom wooden furniture'                                        
     },
     { 
     id: 2,

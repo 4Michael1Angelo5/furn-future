@@ -1,0 +1,33 @@
+query MyQuery {
+  products(first: 12) {
+    nodes {
+      name
+      id
+      productId
+      description
+      slug
+      image {
+        uri
+        title
+        srcSet
+        sourceUrl
+        mediaDetails {
+          sizes {
+            width
+            height
+          }
+        }
+      }
+      galleryImages(first: 6) {
+        nodes {
+          mediaItemUrl
+          title
+          uri
+          srcSet
+          sourceUrl
+        }
+      }
+      onSale
+    }
+  }
+}

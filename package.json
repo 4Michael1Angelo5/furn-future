@@ -1,22 +1,28 @@
 {
   "license": "MIT",
-  "homepage": "https://4michael1angelo5.github.io/furn-future/",
+  "homepage": "https://4michael1angelo5.github.io/furn-future",
   "name": "furn-future",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "apollo-boost": "^0.4.7",
     "bootstrap": "^4.3.1",
+    "express": "^4.17.1",
     "gh-pages": "^2.1.1",
+    "graphql": "^14.6.0",
     "lozad": "^1.14.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-awesome-slider": "^2.2.1",
     "react-burger-menu": "^2.6.12",
     "react-dom": "^16.12.0",
+    "react-render-html": "^0.6.0",
     "react-scripts": "3.2.0",
     "react-scroll-to": "^3.0.0-beta.3",
     "react-strap": "^0.0.1",
-    "reactstrap": "^8.1.1"
+    "reactstrap": "^8.1.1",
+    "woocommerce-api": "^1.5.0"
   },
   "scripts": {
     "predeploy": "yarn build",

@@ -1,4 +1,5 @@
-import React from 'react'; 
+import React, {useContext} from 'react'; 
+import {AppContext} from './context/AppContext';
 import  {Navbar} from 'reactstrap';
 import { slide as Menu } from 'react-burger-menu';
 import { ScrollTo } from "react-scroll-to";
@@ -8,6 +9,7 @@ import Contact from './contactComponent';
 import Gallery from './galleryComponent'
 import {GALLERY} from '../shared/galleryContent';
 import tree from '../shared/icons/tree.png';
+import cart from '../shared/icons/cart.png'
 
 
 class HamburgerMenu extends React.Component {
@@ -16,7 +18,8 @@ class HamburgerMenu extends React.Component {
     }
     aboutPage = React.createRef();
     galleryPage = React.createRef() ; 
-    
+
+
     render () {
         // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
         return (
@@ -41,6 +44,13 @@ class HamburgerMenu extends React.Component {
                 <div id = "store" onClick ={() => scroll({ x:0,y:window.innerHeight*3+90 ,smooth: true })}>store</div>
                 )}
                 </ScrollTo>
+                <ScrollTo >
+                {({ scroll }) => (
+                <div id = "cart" onClick ={() => scroll({ x:0,y:window.innerHeight*3+90 ,smooth: true })}>cart
+                <img src = {cart} width = "25px"></img>
+                </div>
+                )}
+                </ScrollTo>
                 <ScrollTo>
                 {({ scroll}) => (
                 <div id = "contact" onClick ={() => scroll({ x:0,y:window.innerHeight*4+120 ,smooth: true })}>contact</div>
@@ -53,7 +63,7 @@ class HamburgerMenu extends React.Component {
         }
     }    
 
-class Home extends React.Component{
+class Home extends React.Component{     
 
     constructor(props){
         super(props);
@@ -62,11 +72,11 @@ class Home extends React.Component{
             isUserInteractingWithStore : false , 
             windowLength : window.innerHeight,
             content : GALLERY,
-            currentIndex: 1
+            currentIndex: 1,
+            inventory : []
         }
         this.homePage=React.createRef(this.homePage)
         this.handleScrollableFocus = this.handleScrollableFocus.bind(this)
-       
         }
 
         handleScrollableFocus(state){
@@ -76,7 +86,7 @@ class Home extends React.Component{
         }
 
 render(){
-    
+
     return(
         <React.Fragment>
         <div id = "home-page" ref= {this.homePage} className = "landing-page"> 

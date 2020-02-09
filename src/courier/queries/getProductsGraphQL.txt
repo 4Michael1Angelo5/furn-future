@@ -1,0 +1,32 @@
+query MyQuery {
+  products {
+    nodes {
+      name
+      id
+      description
+      image {
+        sourceUrl
+      }
+      ... on SimpleProduct {
+        price
+        width
+        height
+        length
+        attributes {
+          nodes {
+            name
+            ... on LocalProductAttribute {
+              name
+              options
+            }
+          }
+        }
+      }
+      galleryImages {
+        nodes {
+          sourceUrl
+        }
+      }
+    }
+  }
+}

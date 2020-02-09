@@ -1,12 +1,14 @@
 import React from 'react'; 
 import {Collapse } from 'reactstrap' ;
-
-
 import deal from '../shared/icons/deal.png'
 import conversation from '../shared/icons/conversation.png';
 import chair from '../shared/icons/chair.png';
 import compass from '../shared/icons/compass.png';
 import shoppingCart from '../shared/icons/shopping-cart.png'
+import getInitialProps from '../courier/graphQL-apollo';
+import getProducts from '../courier/getProducts';
+import renderHTML from 'react-render-html';
+import AddToCartButton from './cart/addToCart';
 
 const storeContent = [
     {
@@ -54,7 +56,7 @@ const storeInventory = [
     },
     {
         id: 1,
-        title:"CAMPBEL MEDIA STAND",
+        title:"Campel Media Stand",
         price: "$799",
         category: "media stands",
         description: "When modern design comes together with rustic style, the result is the charming Campbell 81” media stand. Constructed of solid acacia in a weathered finish, with interlaced bent-planks, it also boasts a wire-brushed texture, incorporating the natural knots in the wood grain into the design. As a result, the drift wood look evokes a dreamy coastal vibe. Its three open cubbies, two spacious drawers and open lower shelf allow ample storage for all your equipment. The long, sleek body with angled, tapered legs bring modern touches to your decor while the sturdy, natural materials blend in the casual country feel and make this piece an impressive compliment to any room that becomes its home.", 
@@ -142,7 +144,7 @@ const storeInventory = [
     },
     {
         id: 5,
-        title:"THORSTEN DESK",
+        title:"Thorsten Desk",
         price: "$279",
         category: "",
         description: "When you need a substantial amount of workspace the Thorsten 63” desk is an excellent option. Solid rubberwood legs in a light wood finish flare at a slight angle supporting the attractive top in a walnut wood grain finish. Its contrasting two-tone color palette adapts to many styles of decor, making it an easy choice as the key component for your office. Additional features incorporated into the design include an aluminum soft-closing cable organizer to conveniently arrange your computer or phone cables, as well as a matching modesty panel to complete the professional look.", 
@@ -199,20 +201,29 @@ handleFocus(e,index){
     this.setState({activeFrame:index})
     
 }
+
+// componentDidMount(){
+//     console.log(this.props)
+//     console.log(this.props.item.description)
+   
+// }
  
     
     render(){
 
-        return(
+        const product = this.props.item;
+
+        return( 
             <React.Fragment>
                 <div className = {this.props.orientation === "portrait" ? "col-12" : "col-6" }>
-                    <img width="100%" src = {this.state.defaultView === true? this.props.item.images[0]:this.props.item.images[this.state.activeFrame]} alt={this.props.item.title} />
+                    <h4 className = "d-flex justify-content-center">{product.name}</h4>
+                    <img width="100%" src = {this.state.defaultView === true? product.image.sourceUrl: product.galleryImages.nodes[this.state.activeFrame].sourceUrl} alt={product.name} />
                     <div className = "col-12 no-padding  d-flex justify-content-center">
                     {
-                      this.props.item.images.map((image,index)=>{
+                      product.galleryImages.nodes.map((image,index)=>{
                           return(
                               <div  key = {index} className = "col-2 no-padding store-item-preview">
-                              <img onClick = {e=>{this.handleFocus(e,index)}} height = "100%" width = "100%" src = {image} alt = {`inventory-item-${index}`}/> 
+                              <img onClick = {e=>{this.handleFocus(e,index)}} height = "100%" width = "100%" src = {image.sourceUrl} alt = {`inventory-item-${index}`}/> 
                           </div>
       
                           )
@@ -227,7 +238,8 @@ handleFocus(e,index){
                 <div className = {this.props.orientation === "portrait" ?  " col-12" : "col-6"}>
                     <h4 className="text-center">{this.props.item.price}</h4>
 
-                    <div className = "text-center add-to-cart-btn"> ADD TO CART</div>
+                    {/* <div className = "text-center add-to-cart-btn"> ADD TO CART</div> */}
+                    <AddToCartButton product = {product}/>
 
                         <div className = "col-12 no-padding d-flex justify-content-start">
                             <div  onClick = {e=>this.toggle(e,"description")} className={this.state.collapseDescription?"circle-plus closed opened":"circle-plus closed " }>
@@ -240,7 +252,7 @@ handleFocus(e,index){
                         </div>
                         <Collapse isOpen={this.state.collapseDescription}>
                             <div className = "col-12 no-padding">
-                                <p>{this.props.item.description}</p>
+                                {renderHTML(product.description)}
                             </div>
                         </Collapse>
 
@@ -257,9 +269,9 @@ handleFocus(e,index){
                         <Collapse isOpen={this.state.collapseDetails}>
                             <div className = "col-12 no-padding">
                                 <h6>MATERIALS</h6>
-                                <p>{this.props.item.details[0].materials}</p>
+                                {/* <p>{this.props.item.details[0].materials}</p> */}
                                 <h6>DIMENSIONS</h6>
-                                <p>{this.props.item.details[0].dimensions }</p>
+                                {/* <p>{this.props.item.details[0].dimensions }</p> */}
                             </div>
                         </Collapse>
 
@@ -273,9 +285,13 @@ handleFocus(e,index){
 
 
 class ShopCatalouge extends React.Component{
+    
+    
+    
 
     render(){
-        
+
+    const products = this.props.products;        
     var grid = this.props.orientation === "portrait" ? "col-6" : "col-4"
     // var height = this.props.orientation === "portrait" ? "26vh" : "50vh" ; 
         return(
@@ -283,7 +299,7 @@ class ShopCatalouge extends React.Component{
                 
 
                 { this.props.viewProduct === false? 
-                    storeInventory.map((item,index)=>{
+                    products.map((item,index)=>{
                         return(
                          
                             <div key = {index} onClick = {e=>this.props.renderProductView(e,index)} className = {grid + " catalouge-item"}
@@ -299,8 +315,8 @@ class ShopCatalouge extends React.Component{
                                         >
 
                                     </div> */}
-                                    <img width = "100%" src = {item.images[0]} alt = {`item-${index}`}></img>
-                                    <h4>{item.title}</h4>
+                                    <img width = "100%" src = {item.image.sourceUrl} alt = {`item-${index}`}></img>
+                                    <h4>{item.name}</h4>
                                     <h5>{item.price}</h5>
                                 </div>
                             </div>
@@ -308,7 +324,7 @@ class ShopCatalouge extends React.Component{
                         );
                         
                     }):
-                    <ProductView orientation = {this.props.orientation} item = {storeInventory[this.props.activeItemId] } />
+                    <ProductView orientation = {this.props.orientation} item = {products[this.props.activeItemId] } />
                 }
             
 
@@ -403,6 +419,10 @@ class StoreOptions extends React.Component{
 
 }
 class Store extends React.Component{
+
+    getInitialProps = getInitialProps.bind(this);
+    getProducts = getProducts.bind(this);
+
     constructor(props){
         super(props)
         this.state={
@@ -411,7 +431,8 @@ class Store extends React.Component{
             viewProduct:false , 
             activeItemId : Number ,
             orientation:"",
-            swiped: false
+            swiped: false,
+            inventory: []
     
         }
     this.renderProductView =this.renderProductView.bind(this);
@@ -425,7 +446,7 @@ class Store extends React.Component{
     this._onTouchMove = this._onTouchMove.bind(this);
     this._onTouchEnd = this._onTouchEnd.bind(this);
     this._swipe = {};
-    this.minDistance = 50;
+    this.minDistance = 150;
 }
 
 
@@ -501,6 +522,19 @@ componentWillMount(){
 }
 componentDidMount(){ 
     window.addEventListener("resize",this.handleOrientation)
+    // getProducts().then(result=>{ 
+    //     console.log(result)
+    //     // this.setState({inventory:result})
+    // })
+
+
+    getInitialProps().then(result=>{
+        console.log(result)
+        this.setState({inventory:result})
+    })
+
+ 
+    
 }
 
 componentWillUnmount(){
@@ -515,7 +549,7 @@ render(){
             onTouchEnd = {this._onTouchEnd}
 
 
-        style = {this.state.viewCatalouge===true? {minHeight:"100vh", height:"100%"}:{height:"100vh"}}>
+        style = {this.state.viewCatalouge===true? {minHeight:"100vh", height:"100%", marginBottom:"0px"}:{height:"100vh",marginBottom:"0px"}}>
             <h1 className= "store-page-title">Store</h1>
                <div className = "container-fluid"
             //    style = {{paddingTop:"80px"}}
@@ -536,7 +570,7 @@ render(){
                                     })
                                 }
                         </div>:
-                        <ShopCatalouge orientation = {this.state.orientation} renderProductView={this.renderProductView} viewProduct = {this.state.viewProduct} activeItemId={this.state.activeItemId}/>
+                        <ShopCatalouge products = {this.state.inventory} orientation = {this.state.orientation} renderProductView={this.renderProductView} viewProduct = {this.state.viewProduct} activeItemId={this.state.activeItemId}/>
 
                }
                </div> 
