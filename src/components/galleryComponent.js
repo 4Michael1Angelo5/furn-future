@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {
-  CarouselItem,
-} from 'reactstrap';
+import { CarouselItem} from 'reactstrap';
+
 
 import AwesomeSlider from 'react-awesome-slider';
 import AwsSliderStyles from 'react-awesome-slider/src/styles';
@@ -31,12 +30,15 @@ class Slider extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-         content : GALLERY 
+         content : GALLERY,
     }
   }
+
+
   render(){
     return(
-      <AwesomeSlider cssModule={AwsSliderStyles}>
+      <div id = "gallery">
+        <AwesomeSlider  cssModule={AwsSliderStyles}>
         <div>
         <Slide content = {this.state.content}/>
         </div>
@@ -47,6 +49,7 @@ class Slider extends React.Component{
         <Slide content = {this.state.content}/>
         </div>
       </AwesomeSlider>
+      </div>
     );
   }
 
@@ -58,7 +61,8 @@ class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-         content : GALLERY 
+         content : GALLERY,
+          
     };
   }
 
@@ -71,24 +75,33 @@ class Gallery extends Component {
     this.animating = false;
   }
 
+ 
   render() {
-   
-
+  
      items.map((item,index) => {
       return (
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={item.src}>
-            <Slide content = {this.state.content} key = {index}/>
+            <Slide   content = {this.state.content} key = {index}/>
         </CarouselItem>
       );
     });
 
     return (
- 
-      <Slider/>
-      
+
+      this.props.isUserInteractingWithBlog
+      ?
+      null
+      :
+        <React.Fragment>
+          <Slider/> 
+          <div className = "row d-flex justify-content-center">
+              <div className = "down gallery" onClick ={(e) =>this.props.downBtnScroll(e,'store')}/>
+          </div>
+        </React.Fragment>
+   
     );
   }
 }

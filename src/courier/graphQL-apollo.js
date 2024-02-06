@@ -4,36 +4,49 @@ import client from "./ApolloClient"
 const PRODUCTS_QUERY =gql`query{
 
 
-    products {
-      nodes {
-        name
-        id
-        description
-        image {
-          sourceUrl
+  products(where: {category: "Catalog"}) {
+    nodes {
+      name
+      id
+      description
+      image {
+        sourceUrl
+      }
+      ... on SimpleProduct {
+        price
+        stockStatus
+        stockQuantity
+        purchasable
+        width
+        height
+        length
+        productId
+        productCategories(first: 5) {
+          nodes {
+            name
+          }
         }
-        ... on SimpleProduct {
-          price
-          width
-          height
-          length
-          attributes {
-            nodes {
+        attributes {
+          nodes {
+            name
+            ... on LocalProductAttribute {
               name
-              ... on LocalProductAttribute {
-                name
-                options
-              }
+              options
             }
           }
         }
-        galleryImages {
-          nodes {
-            sourceUrl
+        galleryImages(first: 6) {
+          edges {
+            node {
+              id
+              mediaItemUrl
+              sourceUrl
+            }
           }
         }
       }
     }
+  }
   
   
   

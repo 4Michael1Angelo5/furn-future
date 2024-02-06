@@ -1,7 +1,7 @@
 .brk-btn {
     position: relative;
     // top: 10px;
-    left: calc(100% - 125px);
+    // left: calc(100% - 125px);
     width:100px;
     background: none;
     color:#4b414a ;
@@ -58,6 +58,7 @@
    display: flex;
    align-items: center;
    top:10px;
+  //  left: calc(100% - 125px)
   }
 
   .closed {
@@ -86,9 +87,12 @@
   }
   
   .circle-plus {
-      height: 4em;
-      width: 4em;
-      font-size: 1em;
+      // height: 4em;
+      // width: 4em;
+      height: 2rem;
+      width: 2rem;
+
+      // font-size: 1em;
       opacity: .7;
   }
 
@@ -98,8 +102,10 @@
   
   .circle-plus .circle {
       position: relative;
-      width: 2.55em;
-      height: 2.5em;
+      // width: 2.55em;
+      // height: 2.5em;
+      width: 2rem;
+      height: 2rem;
       border-radius: 100%;
       border: solid .5em #DFDAD7;
   }
@@ -111,7 +117,7 @@
       left: 50%;
       margin-left: -15px;
       top: 50%;
-      margin-top: -2.5px;
+      margin-top: -a2.5px;
   }
   .circle-plus .circle .vertical {
       position: absolute;
@@ -123,6 +129,165 @@
       top: 50%;
       margin-top: -15px;
   }
+
+
+  $add-to-cart-btn-color: #9090a0 ;
+  $add-to-cart-btn-font-color:black;
+
+  $view-cart-btn-color: #7bb7e4; 
+  $view-cart-btn-font-color: #9090a0; 
+
+
+  .cart-action-btn {
+    width:90%;
+    max-width: 600px;
+    margin-top: .5rem;
+    margin-bottom: 10px;
+    color:black ;
+    padding: 5px 10px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+  }
+
+  .cart-action-btn:hover{
+    cursor: pointer;  
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;;
+    color: #495057; 
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+
+  .cart-action-btn:active {
+    background-color: #4e8eca;
+    box-shadow: 0 .125rem #666;
+    transform: translateY(4px);
+  }
+
+
+  .add-to-cart-btn{
+    background-color: $add-to-cart-btn-color;
+  }
+
+  .view-cart-btn{
+    background-color: $view-cart-btn-color;
+  }
+
+  .landing-page-btns{
+    display: flex;
+    position: absolute;
+    width: 150px;
+    background: #403e3bb5;
+    border: 2px solid white;
+    border-radius: 19px;
+    padding: 5px;
+    justify-content: center;
+    left: calc(50vw - 75px);
+    backdrop-filter: blur(4px);
+  }
+
+  .view-catalog-btn{
+    top: calc(50vh + 40px);
+  }
+
+  .view-custom-btn{
+    top: calc(50vh + 90px);
+  }
+
+  .x-btn{
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    // width: 16px;
+    height: 16px;
+  }
+  .x-btn:hover {
+    cursor: pointer;
+  }
+  .x-btn:before, .x-btn:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 16px;
+    width: 2px;
+    background-color:white ;
+  }
+  .x-btn:before {
+    transform: rotate(45deg);
+  }
+  .x-btn:after {
+    transform: rotate(-45deg);
+  }
+
+  .plus-btn{
+    // position: absolute;
+    // right: -32px;
+    // top: 6px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .plus-btn:hover {
+    cursor: pointer;
+  }
+  .plus-btn:before, .plus-btn:after {
+    position: absolute;
+    // left: 15px;
+    content: ' ';
+    height: 16px;
+    width: 2px;
+    background-color:black;
+  }
+  .plus-btn:before {
+    transform: rotate(0deg);
+  }
+  .plus-btn:after {
+    transform: rotate(-90deg);
+  }
+
+  .minus-btn{
+    // position: absolute;
+    // right: -100px;
+    // top: 6px;
+    width: 2px;
+    height: 16px;
+    background-color: black;
+    // transform: rotate(90deg);
+    z-index: 10;;
+    transform-origin: bottom;
+    transform: rotate(90deg) translateX(-8px);
+  }
+
+  .minus-btn:hover{
+    cursor: pointer;
+  }
   
-  
-  
+    .minus-btn:before {
+    position: absolute;
+    left: -7px;
+    content: ' ';
+    height: 16px;
+    width: 16px;
+    // background-color:rgba(148, 99, 99, 0.404) ;
+    border:1px solid black; 
+    border-radius:50%;
+    
+  }
+  // .minus-btn:before {
+  //   transform: rotate(90deg);
+  // }
+  // .minus-btn:after {
+  //   transform: rotate(0deg);
+  // }
+
+  .cart-controls{
+    margin:0px !important;
+    height:32px; 
+    background-color: #d2d3d9
+  }

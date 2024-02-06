@@ -1,7 +1,8 @@
 const wooConfig = {
-    siteUrl: 'https://cedarcreekforestry.com',
-    consumerKey: 'ck_847c341c5e4d89e3c4e8803b6bbbcd957d330347',
-    consumerSecret: 'cs_d6da0688b0f0bd86b41d3ed00fe1a9522d87f6d9'
+    siteUrl: 'https://4michael1angelo5.wpcomstaging.com/',
+    consumerKey: 'ck_bea7891cbdf78968209bfd1a1d71a81b8dbcfe9d',
+    consumerSecret: 'cs_7da2b616178b684a8181c77abd11750d0c45b453'
+     
 
 };
 

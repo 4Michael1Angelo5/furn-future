@@ -1,5 +1,6 @@
 import React from 'react'; 
 import {Collapse } from 'reactstrap' ;
+import { ScrollTo } from "react-scroll-to";
 import deal from '../shared/icons/deal.png'
 import conversation from '../shared/icons/conversation.png';
 import chair from '../shared/icons/chair.png';
@@ -7,8 +8,14 @@ import compass from '../shared/icons/compass.png';
 import shoppingCart from '../shared/icons/shopping-cart.png'
 import getInitialProps from '../courier/graphQL-apollo';
 import getProducts from '../courier/getProducts';
+import getCustomProducts from '../courier/getCustomProducts';
+import getCustomOrderTestProps from '../courier/getCustomTest';
+import getTableLegProducts from '../courier/getTableLegProducts';
+import getMountingHardware from '../courier/getMountingHardware';
+import getFinishes from '../courier/getFinishes';
 import renderHTML from 'react-render-html';
 import AddToCartButton from './cart/addToCart';
+import CustomOrderComponent from './customOrderComponent';
 
 const storeContent = [
     {
@@ -172,6 +179,7 @@ class ProductView extends React.Component{
         this.state = {
             activeFrame: Number ,
             defaultView: true ,
+            
             collapseDescription: false,
             collapseDetails:false
             
@@ -183,11 +191,11 @@ class ProductView extends React.Component{
 toggle(e,target) {
     // console.log(this.props)
     var height =  this.state.collapseDescription===true? 3*(window.innerHeight + 30)   :4*(window.innerHeight + 30) - 30 ;
-    window.scrollTo({
-        top: height,
-        left: 0,
-        behavior: 'smooth'
-      });
+    // window.scrollTo({
+    //     top: height,
+    //     left: 0,
+    //     behavior: 'smooth'
+    //   });
     target === "description" ?
     this.setState(state => ({ collapseDescription: !state.collapseDescription })) 
     :   
@@ -195,35 +203,36 @@ toggle(e,target) {
     this.setState(state =>({ collapseDetails: !state.collapseDetails }));
    
       }
-
+      
 handleFocus(e,index){
     this.setState({defaultView:false})
     this.setState({activeFrame:index})
+       
     
-}
+    
+    }
 
-// componentDidMount(){
-//     console.log(this.props)
-//     console.log(this.props.item.description)
-   
-// }
- 
-    
-    render(){
+     
+    render(){   
 
         const product = this.props.item;
+        
+        console.log('product',product)
+        this.state.defaultView===false?console.log(product.galleryImages.edges[this.state.activeFrame].node):console.log("default view true");
+        
 
         return( 
             <React.Fragment>
                 <div className = {this.props.orientation === "portrait" ? "col-12" : "col-6" }>
                     <h4 className = "d-flex justify-content-center">{product.name}</h4>
-                    <img width="100%" src = {this.state.defaultView === true? product.image.sourceUrl: product.galleryImages.nodes[this.state.activeFrame].sourceUrl} alt={product.name} />
+                    {product.stockStatus === "OUT_OF_STOCK"? <div className = "sold-badge">SOLD</div>: null}
+                    <img width="100%" src = {this.state.defaultView === true? product.image.sourceUrl: product.galleryImages.edges[this.state.activeFrame].node.mediaItemUrl } alt={product.name} />
                     <div className = "col-12 no-padding  d-flex justify-content-center">
                     {
-                      product.galleryImages.nodes.map((image,index)=>{
+                      product.galleryImages.edges.map((image,index)=>{
                           return(
                               <div  key = {index} className = "col-2 no-padding store-item-preview">
-                              <img onClick = {e=>{this.handleFocus(e,index)}} height = "100%" width = "100%" src = {image.sourceUrl} alt = {`inventory-item-${index}`}/> 
+                              <img onClick = {e=>{this.handleFocus(e,index)}} height = "100%" width = "100%" src = {image.node.mediaItemUrl} alt = {`inventory-item-${index}`}/> 
                           </div>
       
                           )
@@ -238,10 +247,10 @@ handleFocus(e,index){
                 <div className = {this.props.orientation === "portrait" ?  " col-12" : "col-6"}>
                     <h4 className="text-center">{this.props.item.price}</h4>
 
-                    {/* <div className = "text-center add-to-cart-btn"> ADD TO CART</div> */}
+                  
                     <AddToCartButton product = {product}/>
 
-                        <div className = "col-12 no-padding d-flex justify-content-start">
+                        <div className = "col-12 mb-2 no-padding d-flex justify-content-start">
                             <div  onClick = {e=>this.toggle(e,"description")} className={this.state.collapseDescription?"circle-plus closed opened":"circle-plus closed " }>
                                 <div className="circle">
                                     <div className="horizontal"></div>
@@ -257,7 +266,7 @@ handleFocus(e,index){
                         </Collapse>
 
 
-                        <div className =  "col-12 no-padding d-flex justify-content-start">
+                        <div className =  "col-12 mb-2 no-padding d-flex justify-content-start">
                             <div  onClick = {e=>this.toggle(e,"details")} className={this.state.collapseDetails?"circle-plus closed opened":"circle-plus closed " }>
                                 <div className="circle">
                                     <div className="horizontal"></div>
@@ -269,9 +278,27 @@ handleFocus(e,index){
                         <Collapse isOpen={this.state.collapseDetails}>
                             <div className = "col-12 no-padding">
                                 <h6>MATERIALS</h6>
-                                {/* <p>{this.props.item.details[0].materials}</p> */}
+                                {
+                                
+                                product.attributes !== null 
+                                ?
+                                product.attributes.nodes.map( (item,index) => {
+
+                                    return(
+                                        <p key ={index}>
+                                            {item.name} : {item.options}
+                                        </p>
+
+                                    );
+                                })
+
+                    
+                                :
+                                null
+                                }
+                                
                                 <h6>DIMENSIONS</h6>
-                                {/* <p>{this.props.item.details[0].dimensions }</p> */}
+                            <p>L {product.length}" W {product.width}"  H {product.height}" </p>
                             </div>
                         </Collapse>
 
@@ -295,14 +322,24 @@ class ShopCatalouge extends React.Component{
     var grid = this.props.orientation === "portrait" ? "col-6" : "col-4"
     // var height = this.props.orientation === "portrait" ? "26vh" : "50vh" ; 
         return(
-            <div  className = "row">
+            
+    this.props.catLoading 
+    ?  
+    <div className = "loading-container">
+    <div className ="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+    :       <div  className = "row">
                 
-
-                { this.props.viewProduct === false? 
+ 
+                { 
+                    this.props.viewProduct === false
+                    ? 
                     products.map((item,index)=>{
                         return(
                          
-                            <div key = {index} onClick = {e=>this.props.renderProductView(e,index)} className = {grid + " catalouge-item"}
+                            <div key = {index} onClick = {e=>this.props.renderProductView(e,index)} 
+                            className = {grid + " catalouge-item"}
+                            
                                 >
                                 <div className = "inventory-container">
                                     {/* <div className = "inventory-item"
@@ -315,6 +352,7 @@ class ShopCatalouge extends React.Component{
                                         >
 
                                     </div> */}
+                                    {item.stockStatus === "OUT_OF_STOCK"? <div className = "sold-badge">SOLD</div>: null}
                                     <img width = "100%" src = {item.image.sourceUrl} alt = {`item-${index}`}></img>
                                     <h4>{item.name}</h4>
                                     <h5>{item.price}</h5>
@@ -323,12 +361,11 @@ class ShopCatalouge extends React.Component{
                             
                         );
                         
-                    }):
+                    })
+                    :
                     <ProductView orientation = {this.props.orientation} item = {products[this.props.activeItemId] } />
                 }
-            
-
-
+     
             </div>
         );
     }
@@ -379,9 +416,9 @@ class StoreOptions extends React.Component{
         var height = this.props.orientation === "landscape" ? "75vh" : "35.5vh";
         var margin = this.props.orientation === "landscape" ? "0vh" : "2vh";
         return(
-            <div  className = "row  d-flex  justify-content-center store-content-container"> 
+            <div className = "store-options" className = "row  d-flex  justify-content-center store-content-container"> 
                 <div className = {grid}>
-                <div  onClick = { e=>this.props.handleView(e,"catalouge")} className = "store-content-step-description"
+                <div  onClick = { e=>this.props.handleView(e,"catalog")} className = "store-content-step-description"
                         style = {{
                             //  maxHeight: "75vh", 
                             // display:"flex",
@@ -427,6 +464,8 @@ class Store extends React.Component{
 
     getInitialProps = getInitialProps.bind(this);
     getProducts = getProducts.bind(this);
+    getCustomProducts = getCustomProducts.bind(this);
+    getCustomOrderTestProps = getCustomOrderTestProps.bind(this);
 
     constructor(props){
         super(props)
@@ -437,14 +476,21 @@ class Store extends React.Component{
             activeItemId : Number ,
             orientation:"",
             swiped: false,
-            inventory: []
-    
+            inventory: [],
+            tableLegs:[],
+            mountingHardware: [] , 
+            finishTypes: [],
+            loading: true ,
+            catLoading:true 
+            
+
+
         }
     this.renderProductView =this.renderProductView.bind(this);
     this.backToCatalouge =this.backToCatalouge.bind(this);
-    this.handleView = this.handleView.bind(this);
+    // this.handleView = this.handleView.bind(this);
     this.handleOrientation = this.handleOrientation.bind(this);
-    this.revertView = this.revertView.bind(this);
+    // this.revertView = this.revertView.bind(this);
     // swipe left to right to back
 
     this._onTouchStart = this._onTouchStart.bind(this);
@@ -457,6 +503,7 @@ class Store extends React.Component{
 
 
 renderProductView(e,productID){
+    this.props.handleScrollableFocus()
     this.setState({viewProduct:true})
     this.setState({activeItemId:productID})
    
@@ -464,27 +511,26 @@ renderProductView(e,productID){
 
 backToCatalouge(){
     this.setState({viewProduct:false});
-    return this.props.handleScrollableFocus()
+    // return this.props.handleScrollableFocus()
 }
 
-revertView(){
+// revertView(){
     
-    this.setState({viewCatalouge:false});
-    this.setState({viewCustom:false});
-    window.scrollTo(0,window.innerHeight*3+90)
-    return this.props.handleScrollableFocus(this.props.isUserInteractingWithStore);
+//     this.setState({viewCatalouge:false});
+//     this.setState({viewCustom:false});
+//     window.scrollTo(0,window.innerHeight*3+90)
+//     return this.props.handleScrollableFocus(this.props.isUserInteractingWithStore);
     
-}
-handleView(e,param){
+// }
+// handleView(e,param){
 
-    this.props.handleScrollableFocus();
-    param ==="custom"?
-        this.setState({viewCustom:true}) :
-        this.setState({viewCatalouge:true})  
-    
-    
-
-}
+//     this.props.handleScrollableFocus();
+//     param ==="custom"
+//     ?
+//     this.setState({viewCustom:true}) 
+//     :
+//     this.setState({viewCatalouge:true})  
+// }
 
 handleOrientation(){
     if (window.innerWidth >= window.innerHeight) {
@@ -517,7 +563,7 @@ _onTouchStart(e) {
       this.props.onSwiped && this.props.onSwiped();
       this.setState({ swiped: true });
     //    window.alert("you just swiped 50px")
-     this.state.viewProduct===true?this.backToCatalouge():this.revertView()
+     this.state.viewProduct===true?this.backToCatalouge():this.props.revertView()
     }
     this._swipe = {};
   }
@@ -526,19 +572,81 @@ componentWillMount(){
     this.handleOrientation()
 }
 componentDidMount(){ 
-    window.addEventListener("resize",this.handleOrientation)
-    // getProducts().then(result=>{ 
-    //     console.log(result)
-    //     // this.setState({inventory:result})
-    // })
 
+    // listen for resize events and change viewport state to either portrait or landscape 
+    window.addEventListener("resize",this.handleOrientation) 
 
+    // get all products that appear in catalog
+    // @TODOs need to rename this function to something more descriptive 
     getInitialProps().then(result=>{
-        console.log(result)
+
+        console.log('available products in catalog',result)
+         
         this.setState({inventory:result})
+        this.setState({catLoading:false})
+
     })
 
- 
+    // get all products that appear in the custom section of store
+    // get all the "series" from which these products are children of
+    // @TODOS need to handle errors
+    getCustomProducts().then(result=>{
+             
+        const series = result.edges ; 
+        const products = result.nodes; 
+
+        this.setState({series:series}); 
+        this.setState({products:products});
+
+        console.log("available series :", series, 'all available products in series :', products)
+        this.setState({loading:false});
+        
+    })
+
+    // test for new syntax in getting series
+
+    getCustomOrderTestProps().then(result=>{
+             
+        const testSeries = result.edges ; 
+        
+
+        this.setState({testSeries:testSeries}); 
+         
+
+        console.log("test",this.state.testSeries)
+       
+            
+    })
+
+    // get all the table leg products that appear in custom / hardware section
+    // @TODOS need to handle errors
+    getTableLegProducts().then(result=>{
+        
+        const tableLegs = result ; 
+
+        this.setState({tableLegs : tableLegs})
+
+        
+    })
+    
+    // get all mounting hardware products that appear in custom /mounting hardware section
+    // @TODOS need to handle errors
+    getMountingHardware().then(result=>{
+        
+        const mountingHardware = result ; 
+
+        this.setState({mountingHardware: mountingHardware })
+    })
+
+    // get all finish types that are available in the custom / finish section
+    // @TODOS need to handle errors
+    getFinishes().then(result => {
+
+        const finishTypes = result ; 
+        console.log('available finish types: ', finishTypes)
+        this.setState({finishTypes:finishTypes});
+    })
+
     
 }
 
@@ -547,57 +655,102 @@ componentWillUnmount(){
 }
 render(){
     var grid = this.state.orientation ==="landscape"? "col-4" : "col-12" ;
+    var margin = this.props.isUserInteractingWithStore ? '0px' : '30px';
     return(
-        <div className = "store-page"
+        this.props.isUserInteractingWithBlog
+        ?
+        null
+        :
+        <div 
+            id = "store"
+            className = "store-page page"
             onTouchStart = {this._onTouchStart}
             onTouchMove =  {this._onTouchMove}
             onTouchEnd = {this._onTouchEnd}
+            // style = {
+            //     this.props.viewCatalog===true
+            //     ? 
+            //     {minHeight:"100vh", height:"100%", marginBottom:'0px'}
+            //     :
+            //     {minHeight:"100vh",height:'100%',marginBottom:"30px"}
+            //         }
+                >
 
+            {
+                this.props.isUserInteractingWithStore
+                ?
+                this.props.viewCatalog ? <h1 className= "store-page-title page-title">Catalog</h1> : null
+                :
+                <h1 className= "store-page-title page-title">Store</h1>
 
-        style = {this.state.viewCatalouge===true? {minHeight:"100vh", height:"100%", marginBottom:"0px"}:{height:"100vh",marginBottom:"0px"}}>
-            
-            <h1 className= "store-page-title">Store</h1>
+            }
                 
               
                <div className = "container-fluid"
+               
             //    style = {{paddingTop:"80px"}}
                >   
-               {(this.state.viewCatalouge===false && this.state.viewCustom===false) ? 
-               
-               <StoreOptions handleView = {this.handleView} orientation = {this.state.orientation}/> : 
-                this.state.viewCustom   ? 
-                        <div className = "row  d-flex  justify-content-center store-content-container"> 
-                                {
-                                    storeContent.map((item,index)=>{
-                                    return (
-                                    <div key ={index} className= {grid}>
-                                        <CustomOrderInstructions item={item} index={index} orientation = {this.state.orientation}/>
-                                    </div>
-                                    )
+                {(this.props.viewCatalog===false && this.props.viewCustom===false) 
+
+                ? 
                 
-                                    })
-                                }
-                        </div>:
-                        <ShopCatalouge products = {this.state.inventory} orientation = {this.state.orientation} renderProductView={this.renderProductView} viewProduct = {this.state.viewProduct} activeItemId={this.state.activeItemId}/>
+                <StoreOptions 
+                handleView = {this.props.handleView} 
+                orientation = {this.state.orientation}
+                /> 
+                
+                : 
+                
+                this.props.viewCustom   
+                
+                ? 
+         
+                <CustomOrderComponent
+                    series = {this.state.series}
+                    products = {this.state.products}
+                    orientation = {this.state.orientation}
+                    tableLegs = {this.state.tableLegs}
+                    mountingHardware = {this.state.mountingHardware}
+                    finishTypes = {this.state.finishTypes}
+                    loading = {this.state.loading}   
+                    testSeries = {this.state.testSeries}
+                     
+                    />
+                :
+                <ShopCatalouge 
+                    products = {this.state.inventory} 
+                    orientation = {this.state.orientation} 
+                    renderProductView={this.renderProductView} 
+                    viewProduct = {this.state.viewProduct} 
+                    activeItemId={this.state.activeItemId}
+                    catLoading = {this.state.catLoading}
+                    />
 
                }
                </div> 
                {
-                   (this.state.viewCatalouge ===true || this.state.viewCustom ===true)?
+                   (this.props.viewCatalog ===true )?
 
         
-                         <div onClick = {this.state.viewProduct ===true? this.backToCatalouge : this.revertView } className="brk-btn store-back-btn"
-                         style = {this.state.viewCatalouge?{top:"-10px"}:{top:"10px"}}>
+                         <div onClick = {this.state.viewProduct ===true ? this.backToCatalouge : this.props.revertView } className="brk-btn store-back-btn"
+                         style = {this.props.viewCatalog?{top:"-10px" , left: "calc(100% - 125px)" }:{top:"10px", left: "calc(100% - 125px)" }}>
                              back
                      </div>                
                 :
                 null
                 }
-               
 
-       
+          {this.props.viewCatalog || this.props.viewCustom
+          ?
+          null
+          :
+          <div className = "row d-flex justify-content-center">
+          
+            <div className = "down store" onClick ={(e) => this.props.downBtnScroll(e,'contact')}/>
+              
+          </div>
+          }
 
-            
         </div>
     )
 }

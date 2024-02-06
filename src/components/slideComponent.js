@@ -167,7 +167,7 @@ render(){
   
     return(
         <React.Fragment>
-            <div className = "gallery-page container-fluid">
+            <div id = "gallery" className = "gallery-page container-fluid">
                 <h1 className = {this.checkActiveFrame(this.state.activeItem)===false? "mt-2 gallery-header":"d-none"}>Gallery</h1>
                 <div className = " row d-flex justify-content-center"> 
                     {this.checkActiveFrame(this.state.activeItem) ===false?null: <ActiveFrame returnView = {this.returnView} orientation = {this.state.orientation} item={this.props.content[this.checkActiveFrame(this.state.activeItem)]}/>}          

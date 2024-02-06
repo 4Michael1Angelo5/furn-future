@@ -1,19 +1,23 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import './App.css';
-import './buttons.scss'
-import Home from './components/homeComponent'
+import './buttons.scss';
+import './styles/AppBehavior.scss'
 import {AppProvider} from './components/context/AppContext';
-import Main from './components/mainComponent'
+import StripeWrapperComponent from './components/stripeWrapperComponent'
+import {StripeProvider} from 'react-stripe-elements';
+
 
 function App() {
 
   return (
     <div className="App">
-      <AppProvider>
-          <Main/>
-      </AppProvider>
-      
+      <StripeProvider apiKey="pk_test_7LEEquBX9joVxcuVTXsZW0RN002UkUsXj3">
+        <AppProvider>
+            <StripeWrapperComponent/>
+        </AppProvider>
+      </StripeProvider>
+    
     </div>
   );
 }

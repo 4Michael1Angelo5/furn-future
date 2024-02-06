@@ -1,4 +1,4 @@
 const clientConfig = {
-    graphqlUrl: 'https://cedarcreekforestry.com/graphql'
+    graphqlUrl: 'https://4michael1angelo5.wpcomstaging.com/graphql'
 };
 export default clientConfig;
