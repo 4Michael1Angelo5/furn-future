@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/furn-future/precache-manifest.aca4a3c7aaacbafb9e3745a07a6108f5.js"
+  "/furn-future/precache-manifest.b1b9225910f0bdcabf7ff8665634b264.js"
 );
 
 self.addEventListener('message', (event) => {
