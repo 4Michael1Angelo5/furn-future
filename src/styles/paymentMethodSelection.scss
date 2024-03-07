@@ -1,0 +1,41 @@
+$active-color: #7bb7e4;
+$inactive-color:#bfbfbf;
+
+  .choice_line { 
+    margin-bottom: 1rem;
+    border-bottom: 2px solid $active-color;
+    width:50%;
+    position: relative;
+    left:0;
+    transition: .5s ease-out
+    
+  }
+
+    .choice_line.isPaypal{
+      transform: translateX(100%)
+    }
+
+    .choice_line.isCard{
+        transform: translateX(0%)
+    }
+
+    .purchase-btn { 
+        transition: .5s ease-in;
+    }
+
+    .void_state{
+        cursor: not-allowed !important;
+        opacity: .3 ; 
+    }
+
+    .ready_state{
+        opacity:1;
+        animation: blinking 10s
+        
+    }
+
+    @keyframes blinking{0%{-webkit-filter:drop-shadow(0 0 3px rgba(33, 150, 243, .72))}50%{-webkit-filter:drop-shadow(0 0 10px rgba(33, 150, 243, .72))}100%{-webkit-filter:drop-shadow(0 0 3px rgba(33, 150, 243, .72))}}
+
+    .invalid-feedback {
+      margin-bottom: 1rem;
+    }

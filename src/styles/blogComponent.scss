@@ -1,0 +1,57 @@
+@font-face {
+    font-family: titlium ; 
+    src: url(../shared/fonts/Titillium/TitilliumWeb-Light.ttf);
+}
+.blog-header{
+    width:100vw ; 
+    height: 150px ; 
+    background-color:#6c757d ; 
+    background-image: url(https://images.unsplash.com/photo-1546962339-5ff89552b8ed?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+}
+
+.cedarcreek-logo {
+    backdrop-filter: blur(4px);
+    background: #61696973;
+    width :48px ; 
+    height:48px ; 
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+ .blog-header h1{
+    //  color:white;
+     font-family: titlium;
+     
+ }
+
+ .blog-nav{
+    background-color: #8b8b8b;
+    padding: 5px 15px;
+    
+ }
+
+ .blog-nav-item{
+    //  width:100% ;
+     color: white; 
+ }
+
+ .blog-nav-item :hover{
+     cursor: pointer;
+     background-color: rgb(66, 66, 66);
+ }
+
+ 
+ .post-col h3{
+    font-variant: all-petite-caps;
+    font-weight: 300;
+ }
+
+.comment-text {
+    background-color: #f8f8f8;
+    padding: 1.618em;
+    border-radius: 3px;
+}

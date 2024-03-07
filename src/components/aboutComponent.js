@@ -16,6 +16,16 @@ class About extends React.Component{
 
     render(){
 
+        // convention for top calc formula : (pageNumber) * (pageHeight) + (.85 * pageHeight) + (30 pageNumber ) 
+
+        //                                 : (pageHeight)  * (pageNumber + .85) +  30* (pageNumber)
+
+        //        
+        
+        let pageHeight = this.props.windowHeight
+        let pageNumber = 1 ; 
+
+        let top = (pageHeight)  * (pageNumber + .85) +  30* (pageNumber) ; 
     
         
         return(
@@ -24,7 +34,7 @@ class About extends React.Component{
                 ?
                 null
                 :
-                <div ref = {this.aboutPage} id ='about' className = "about-page">
+                <div ref = {this.aboutPage} id ='about' className = "about-page" style={{height:`${this.props.windowHeight}px`}}>
                     <div className = "up-btn"></div>
                     <div className = "container sm-auto">
                         <div className = "row d-flex justify-content-center">
@@ -46,7 +56,10 @@ class About extends React.Component{
                                 
                             </div>
                         <div className = "row d-flex justify-content-center">                           
-                            <div className = "down about" onClick ={(e) =>this.props.downBtnScroll(e,'gallery')}/>
+                            <div 
+                            style = {{top:`${top}px`}}
+                            className = "down" 
+                            onClick ={(e) =>this.props.downBtnScroll(e,'gallery')}/>
                         </div>
                     </div>
                 </div>

@@ -12,10 +12,9 @@ class Home extends React.Component{
     //     }
     // }
 
-    // componentDidMount(){
-    //     const downBtnTarget = document.getElementById('about');
-    //     this.setState({downBtnTarget:downBtnTarget});
-    // }
+    componentDidMount(){
+        console.log(this.props.windowHeight)
+    }
 
     render(){
 
@@ -27,7 +26,7 @@ class Home extends React.Component{
             ?
             null
             :
-            <div id = "home-page" ref= {this.homePage} className = "landing-page"> 
+            <div id = "home-page" ref= {this.homePage} className = "landing-page" style={{height:`${this.props.windowHeight}px`}}> 
         
                 {
                 this.props.isUserInteractingWithStore 
@@ -78,9 +77,7 @@ class Home extends React.Component{
                         <h1 className = "col-10 col-md-6 col-lg-7 col-xl-6 slogan-hook"> Extraordinary <br className ="d-lg-block"/> Custom <br className ="d-lg-block"/> Furniture</h1>
                     </div>
 
-                    <div className = "row d-flex justify-content-center">
-                        <div className="down home"  onClick ={(e) => this.props.downBtnScroll(e,'about')}/>
-                    </div>
+                    
 
                 </div>
                     
@@ -95,6 +92,13 @@ class Home extends React.Component{
                         onClick = {e=>this.props.handleView(e,"catalog")}
                         >
                         Existing Inventory
+                </div>
+
+                <div className = "row d-flex justify-content-center">
+                        <div 
+                        style = {{top:`calc(${this.props.windowHeight*.8}px`}}
+                        className="down"  
+                        onClick ={(e) => this.props.downBtnScroll(e,'about')}/>
                 </div>
                     
                 

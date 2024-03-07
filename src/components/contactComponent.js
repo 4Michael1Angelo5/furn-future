@@ -32,6 +32,12 @@ class Contact extends React.Component{
     }
         
     render(){
+
+        let pageHeight = this.props.PageHeight
+        let pageNumber = 4 ; 
+
+        let top = (pageHeight)  * (pageNumber + .85) +  30* (pageNumber) ; 
+        
         var grid = this.state.orientation === "portrait" ? "col-12 pt-3" : "col-6" ; 
         var row =  this.state.orientation === "portrait" ? "row" : "d-flex flex-row-reverse pt-3";
         return(
@@ -42,7 +48,8 @@ class Contact extends React.Component{
             :
             <React.Fragment>
 
-                    <div id = 'contact' className= "contact-page">
+                    <div id = 'contact' className= "contact-page"
+                        style= {{height : `${this.props.PageHeight}px`}}>
                         <div className = "container-fluid">
                         
 
@@ -90,7 +97,10 @@ class Contact extends React.Component{
                         <div className = "row d-flex justify-content-center">
                         <ScrollTo>
                             {({ scroll }) => (
-                                <div className = "down contact"  onClick = {(e)=>this.props.downBtnScroll(e,'checkout') }/>
+                                <div className = "down"  
+                                style = {{top:`${top}px`}}
+                                onClick = {(e)=>this.props.downBtnScroll(e,'checkout') }
+                                />
                                 )}
                             </ScrollTo>
                                 

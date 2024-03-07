@@ -9,32 +9,27 @@
   } 
 /* -----------------------------------------------------MAIN PAGE---------------------------------------------------------------------- */
 
-.landing-page{
-  height: 100vh;
+.landing-page{  
   background-image: url(https://cdn.trendir.com/wp-content/uploads/2019/04/industrial-lviing-room-2.jpg);
-  /* background-image: url(https://i.pinimg.com/originals/9b/8c/95/9b8c95541ab3aa5c974b790a08164a65.png); */
   background-size: cover; 
   margin-bottom: 30px;
 }
 
 .about-page{
-  height: 100vh;
+ 
+ 
   background-image: url(https://i.pinimg.com/originals/9b/8c/95/9b8c95541ab3aa5c974b790a08164a65.png); 
   background-image:url(https://i.pinimg.com/originals/82/2c/09/822c091e3ba10077b0715eb291fb2059.jpg);
   background-size: cover; 
   background-position: bottom;
   background-color: white;
-  /* color:black; */
   margin-bottom: 30px;
 
 }
 
-.gallery-page{
-  height: 100vh;
+.gallery-page{ 
   margin-bottom: 30px;
 }
-
-
 
 @media only screen and (max-width: 600px) {
   .landing-page {
@@ -89,69 +84,14 @@
 {
  
  position: absolute;
- top:85vh;
- /* position: relative; 
- display:inline-block ; 
- left: calc(50vw - 10px);
- top:50vh ;  */
  padding: 10px;
  border-left:5px solid white; 
  border-bottom:5px solid white;
- /* transform: rotate(-45deg);
- align-self: flex-end; */
- /* transform-origin: bottom; */
  animation-duration: 2s;
  animation-iteration-count: infinite;
-}
-#down:hover
-{
- cursor: pointer;
 
- opacity: 0.8;
 }
-
-#down-about
-{
- position: absolute;
- top:calc(185vh + 30px);
- padding: 10px;
- border-left:5px solid white; 
- border-bottom:5px solid white;
- transform: rotate(-45deg);
-}
-#down-about:hover
-{
- cursor: pointer;
-
- opacity: 0.8;
-}
-
-#down-gallery
-{
- position: absolute;
- top:calc(285vh + 60px);
- padding: 10px;
- border-left:5px solid rgb(71, 64, 64); 
- border-bottom:5px solid rgb(71, 64, 64);
- transform: rotate(-45deg);
- z-index:1000;
-}
-#down-gallery:hover
-{
- cursor: pointer;
-
- opacity: 0.8;
-}
-
-#down-store{
-  padding: 10px;
-  border-left:5px solid rgb(71, 64, 64); 
-  border-bottom:5px solid rgb(71, 64, 64);
-  transform: rotate(-45deg);
-  z-index:1000;
-  position: absolute;
-}
-
+ 
 .nav-btn{
   cursor: pointer;
 }
@@ -182,13 +122,13 @@
 .description-card{
 
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+overflow-y: scroll;
 }
 /* -----------------------------------------------------------contact-page---------------------------------------------------------------------------- */
 
 .contact-page{
-  height:100% ;
-  min-height: 100vh ;
+  
+  
   color: black ; 
   margin-bottom: 30px;
   background-color: rgb(237, 239, 240);
@@ -203,8 +143,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 /* -----------------------------------------------------------store-page---------------------------------------------------------------------------- */
 
 .store-page{
-  /* height: 100vh;  */
-  min-height: 100vh;
+ 
   height: 100%;
   margin-top:30px;
   margin-bottom: 30px;
@@ -330,8 +269,12 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .awssld{
-  height: 100vh;
+  height: 100%;
 } 
+
+.awssld__container{
+  height:100% ; 
+}
 
 
 /* -------------------------------------------------------- end Awesome Slider -------------------------------------------------------------*/
@@ -561,7 +504,7 @@ a {
 }
 
 .checkout-page{
-  min-height: 100vh;
+   
   padding-bottom: 30px;; 
   margin-bottom: 30px;
   color:black;
@@ -621,7 +564,7 @@ a {
 /* -----------------------------------------------Blog------------------------------------------------------- */
 
 .page{
-  min-height: 100vh;
+  min-height: 100dvh;
   height:100% ;
   margin: 30px 0px;
 }

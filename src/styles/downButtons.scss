@@ -1,0 +1,59 @@
+$page-height:100vh ;
+$element-height : 85vh ; 
+$margin : 30px ; 
+
+.down{
+    position: absolute;
+    padding: 10px;
+    border-left:5px solid rgb(71, 64, 64); 
+    border-bottom:5px solid rgb(71, 64, 64);
+    transform: rotate(-45deg);
+    z-index:1000;
+}
+
+// @function height-in-vh($page-number){
+//     @return $page-number * 100vh + 85vh 
+// }
+
+// @function height-in-px($page-number) {
+//     @return $page-number * 30px 
+// }
+
+// // first page: HOME 
+
+// .down.home{
+//     top: calc(#{ height-in-vh(0)} + #{height-in-px(0) }); 
+// }
+
+// //second page: ABOUT
+
+// .down.about{
+//     top: calc(#{ height-in-vh(1)} + #{height-in-px(1) }); 
+// }
+
+// //third page: GALLERY
+
+// .down.gallery{
+//     top: calc(#{ height-in-vh(2)} + #{height-in-px(2) }); 
+// }
+
+// // forth page: BLOG
+
+// .down.blog{
+//     top: calc(#{ height-in-vh(3)} + #{height-in-px(3) }); 
+// }
+
+// //fith page: STORE
+
+// .down.store{
+//     top: calc(#{ height-in-vh(3)} + #{height-in-px(3) }); 
+// }
+
+// // sixth page: CONTACT
+
+// .down.contact{
+//     top: calc(#{ height-in-vh(4)} + #{height-in-px(4) }); 
+// }
+
+
+

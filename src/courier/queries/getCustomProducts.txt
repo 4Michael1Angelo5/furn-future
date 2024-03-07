@@ -1,0 +1,17 @@
+query MyQuery {
+  products(where: {category: "custom"}) {
+    nodes {
+      productId
+      name
+      description(format: RAW)
+      image{
+        sourceUrl
+      }
+      galleryImages{
+        nodes{
+          sourceUrl
+        }
+      }
+    }
+  }
+}

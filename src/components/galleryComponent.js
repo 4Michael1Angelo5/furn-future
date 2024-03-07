@@ -37,16 +37,16 @@ class Slider extends React.Component{
 
   render(){
     return(
-      <div id = "gallery">
+      <div id = "gallery" style={{height:`${this.props.windowHeight}px`}}>
         <AwesomeSlider  cssModule={AwsSliderStyles}>
         <div>
-        <Slide content = {this.state.content}/>
+        <Slide PageHeight = {this.props.windowHeight} content = {this.state.content}/>
         </div>
         <div>
-        <Slide content = {this.state.content}/>
+        <Slide PageHeight = {this.props.windowHeight} content = {this.state.content}/>
         </div>
         <div>
-        <Slide content = {this.state.content}/>
+        <Slide PageHeight = {this.props.windowHeight}  content = {this.state.content}/>
         </div>
       </AwesomeSlider>
       </div>
@@ -77,6 +77,16 @@ class Gallery extends Component {
 
  
   render() {
+
+         // convention for top calc formula : (pageNumber) * (pageHeight) + (.85 * pageHeight) + (30 pageNumber ) 
+
+        //                                 : (pageHeight)  * (pageNumber + .85) +  30* (pageNumber)
+
+        //        
+        
+        let pageHeight = this.props.windowHeight; 
+        let pageNumber = 2 ; 
+        let top = (pageHeight)  * (pageNumber + .85) +  30* (pageNumber) ;
   
      items.map((item,index) => {
       return (
@@ -96,15 +106,17 @@ class Gallery extends Component {
       null
       :
         <React.Fragment>
-          <Slider/> 
+          <Slider windowHeight = {this.props.windowHeight}/> 
           <div className = "row d-flex justify-content-center">
-              <div className = "down gallery" onClick ={(e) =>this.props.downBtnScroll(e,'store')}/>
+              <div 
+              style = {{top:`${top}px`}}
+              className = "down" 
+              onClick ={(e) =>this.props.downBtnScroll(e,'store')}/>
           </div>
         </React.Fragment>
    
     );
   }
 }
-
 
 export default Gallery;

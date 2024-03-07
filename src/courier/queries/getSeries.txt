@@ -1,0 +1,60 @@
+query MyQuery {
+  productCategories(where: {parent: 28}) {
+    edges {
+      node {
+        name
+        description
+        image {
+          sourceUrl
+        }
+      }
+    }
+  }
+}
+
+gets series (product categories that are a sub category of "custom")
+then 
+gets all products associated with each sub-category
+
+query MyQuery {
+  productCategories(where: {parent: 28}) {
+    edges {
+      node {
+        name
+        description
+        image {
+          sourceUrl
+        }
+      }
+    }
+    nodes {
+      products(first: 10) {
+        edges {
+          node {
+            name
+            image {
+              sourceUrl
+            }
+            productId
+            description(format: RAW)
+            ... on SimpleProduct {
+              name
+              price
+              length
+              height
+              weight
+              width
+              purchasable
+              galleryImages {
+                nodes {
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

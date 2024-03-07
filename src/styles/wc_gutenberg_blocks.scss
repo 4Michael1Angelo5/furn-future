@@ -1,0 +1,345 @@
+/* stylelint-disable block-closing-brace-newline-after */
+
+// Breakpoints
+// Forked from https://github.com/Automattic/wp-calypso/blob/46ae24d8800fb85da6acf057a640e60dac988a38/assets/stylesheets/shared/mixins/_breakpoints.scss
+
+// Think very carefully before adding a new breakpoint.
+// The list below is based on wp-admin's main breakpoints
+// See https://github.com/WordPress/gutenberg/tree/master/packages/viewport#breakpoints
+$breakpoints: 480px, 600px, 782px, 960px, 1280px, 1440px;
+
+@mixin breakpoint( $sizes... ) {
+	@each $size in $sizes {
+		@if type-of( $size ) == string {
+			$approved-value: 0;
+			@each $breakpoint in $breakpoints {
+				$and-larger: ">" + $breakpoint;
+				$and-smaller: "<" + $breakpoint;
+
+				@if $size == $and-smaller {
+					$approved-value: 1;
+					@media (max-width: $breakpoint) {
+						@content;
+					}
+				}
+				@else {
+					@if $size == $and-larger {
+						$approved-value: 2;
+						@media (min-width: $breakpoint + 1) {
+							@content;
+						}
+					}
+					@else {
+						@each $breakpoint-end in $breakpoints {
+							$range: $breakpoint + "-" + $breakpoint-end;
+							@if $size == $range {
+								$approved-value: 3;
+								@media (min-width: $breakpoint + 1) and (max-width: $breakpoint-end) {
+									@content;
+								}
+							}
+						}
+					}
+				}
+			}
+			@if $approved-value == 0 {
+				$sizes: "";
+				@each $breakpoint in $breakpoints {
+					$sizes: $sizes + " " + $breakpoint;
+				}
+				@warn "ERROR in breakpoint( #{ $size } ) : You can only use these sizes[ #{$sizes} ] using the following syntax [ <#{ nth( $breakpoints, 1 ) } >#{ nth( $breakpoints, 1 ) } #{ nth( $breakpoints, 1 ) }-#{ nth( $breakpoints, 2 ) } ]";
+			}
+		}
+		@else {
+			$sizes: "";
+			@each $breakpoint in $breakpoints {
+				$sizes: $sizes + " " + $breakpoint;
+			}
+			@error "ERROR in breakpoint( #{ $size } ) : Please wrap the breakpoint $size in parenthesis. You can use these sizes[ #{$sizes} ] using the following syntax [ <#{ nth( $breakpoints, 1 ) } >#{ nth( $breakpoints, 1 ) } #{ nth( $breakpoints, 1 ) }-#{ nth( $breakpoints, 2 ) } ]";
+		}
+	}
+}
+
+/* stylelint-enable */  
+$gap-largest: 40px;
+$gap-larger: 36px;
+$gap-large: 24px;
+$gap: 16px;
+$gap-small: 12px;
+$gap-smaller: 8px;
+$gap-smallest: 4px;
+
+// Variables pulled from Gutenberg.
+// Editor Widths
+$sidebar-width: 280px;
+$content-width: 610px; // For the visual width, subtract 30px (2 * $block-padding + 2px borders). This comes to 580px, which is optimized for 70 characters.
+
+// Blocks
+$block-padding: 14px; // Space between block footprint and focus boundaries. These are drawn outside the block footprint, and do not affect the size.
+$block-spacing: 4px; // Vertical space between blocks.
+$block-side-ui-width: 28px; // Width of the movers/drag handle UI.
+$block-side-ui-clearance: 2px; // Space between movers/drag handle UI, and block.
+$block-container-side-padding: $block-side-ui-width + $block-padding + 2 * $block-side-ui-clearance; // Total space left and right of the block footprint.
+
+// Cart block
+$cart-image-width: 5rem;
+
+.wc-block-grid__products {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 $gap-large;
+}
+
+.wc-block-grid__product {
+	box-sizing: border-box;
+	padding: 0 $gap 0 0;
+	margin: 0 0 $gap-large 0;
+	float: none;
+	width: auto;
+	position: relative;
+	text-align: center;
+}
+
+.wc-block-grid__product-link {
+	text-decoration: none;
+	border: 0;
+}
+
+.wc-block-grid__product-image {
+	text-decoration: none;
+	margin-bottom: $gap;
+	display: block;
+
+	img {
+		vertical-align: middle;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.wc-block-grid__product-title {
+	line-height: 1.2;
+	font-weight: 700;
+}
+
+.wc-block-grid__product-title,
+.wc-block-grid__product-price,
+.wc-block-grid__product-rating {
+	margin-bottom: $gap-small;
+	display: block;
+}
+
+.wc-block-grid__product-add-to-cart {
+	margin: 0;
+	word-break: break-word;
+	white-space: normal;
+
+	a {
+		word-break: break-word;
+		white-space: normal;
+		margin: 0;
+
+		&.loading {
+			opacity: 0.25;
+			padding-right: 2.618em;
+
+			&::after {
+				font-family: WooCommerce; /* stylelint-disable-line */
+				content: "\e01c";
+				vertical-align: top;
+				font-weight: 400;
+				position: absolute;
+				top: 0.618em;
+				right: 1em;
+				animation: spin 2s linear infinite;
+			}
+		}
+
+		&.added::after {
+			font-family: WooCommerce; /* stylelint-disable-line */
+			content: "\e017";
+			margin-left: 0.53em;
+			vertical-align: bottom;
+		}
+	}
+
+	.added_to_cart {
+		text-align: center;
+	}
+}
+
+.wc-block-grid__product-onsale {
+	font-weight: 700;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	left: 0;
+	margin: 0;
+	background-color: #000;
+	color: #fff;
+	display: inline-block;
+	font-size: 0.75em;
+	padding: 0.5em;
+	z-index: 9;
+	text-transform: uppercase;
+}
+
+.wc-block-grid__product-rating {
+
+	.star-rating {
+		overflow: hidden;
+		position: relative;
+		width: 5.3em;
+		height: 1.618em;
+		line-height: 1.618;
+		font-size: 1em;
+		font-family: star; /* stylelint-disable-line */
+		font-weight: 400;
+		display: inline-block;
+		margin: 0 auto;
+		text-align: left;
+
+		&::before {
+			content: "\53\53\53\53\53";
+			top: 0;
+			left: 0;
+			right: 0;
+			position: absolute;
+			opacity: 0.5;
+			color: #aaa;
+		}
+
+		span {
+			overflow: hidden;
+			top: 0;
+			left: 0;
+			right: 0;
+			position: absolute;
+			padding-top: 1.5em;
+		}
+
+		span::before {
+			content: "\53\53\53\53\53";
+			top: 0;
+			left: 0;
+			right: 0;
+			position: absolute;
+			color: #000;
+		}
+	}
+}
+
+.wc-block-grid {
+	&.has-aligned-buttons {
+		.wc-block-grid__product {
+			display: flex;
+			flex-direction: column;
+		}
+		.wc-block-grid__product-add-to-cart {
+			margin-top: auto !important;
+		}
+	}
+	&.has-1-columns {
+		.wc-block-grid__products {
+			display: block;
+		}
+		.wc-block-grid__product {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	@for $i from 2 to 9 {
+		&.has-#{$i}-columns .wc-block-grid__product {
+			flex: 1 0 calc(#{ 100% / $i });
+			max-width: 100% / $i;
+		}
+	}
+	&.has-4-columns:not(.alignwide):not(.alignfull),
+	&.has-5-columns:not(.alignfull),
+	&.has-6-columns:not(.alignfull),
+	&.has-7-columns,
+	&.has-8-columns {
+		.wc-block-grid__product {
+			font-size: 0.8em;
+		}
+	}
+}
+
+// Responsive media styles.
+@include breakpoint( "<480px" ) {
+	.wc-block-grid {
+		@for $i from 2 to 9 {
+			&.has-#{$i}-columns {
+				.wc-block-grid__products {
+					display: block;
+				}
+				.wc-block-grid__product {
+					margin-left: auto;
+					margin-right: auto;
+					flex: 1 0 100%;
+					max-width: 100%;
+					padding: 0;
+				}
+			}
+		}
+		.wc-block-grid__product-image img {
+			width: 100%;
+		}
+	}
+}
+@include breakpoint( "480px-600px" ) {
+	.wc-block-grid {
+		@for $i from 2 to 9 {
+			&.has-#{$i}-columns {
+				.wc-block-grid__product {
+					flex: 1 0 50%;
+					max-width: 50%;
+					padding: 0;
+					margin: 0 0 $gap-large 0;
+				}
+				.wc-block-grid__product:nth-child(odd) {
+					padding-right: $gap/2;
+				}
+				.wc-block-grid__product:nth-child(even) {
+					padding-left: $gap/2;
+					.wc-block-grid__product-onsale {
+						left: $gap/2;
+					}
+				}
+			}
+		}
+		.wc-block-grid__product-image img {
+			width: 100%;
+		}
+	}
+}
+
+.theme-twentysixteen {
+	.wc-block-grid {
+		// Prevent white theme styles.
+		.price ins {
+			color: #77a464;
+		}
+	}
+}
+.theme-twentynineteen {
+	.wc-block-grid__product {
+		font-size: 0.88889em;
+	}
+	// Change the title font to match headings.
+	.wc-block-grid__product-title,
+	.wc-block-grid__product-onsale {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	}
+	.wc-block-grid__product-onsale {
+		line-height: 1;
+	}
+}
+
+
+// jet pack gif css
+
+.wp-block-jetpack-gif{clear:both;margin:0 0 20px}.wp-block-jetpack-gif figure{margin:0;position:relative;width:100%}.wp-block-jetpack-gif iframe{border:0;left:0;height:100%;position:absolute;top:0;width:100%}.wp-block-jetpack-gif.aligncenter{text-align:center}.wp-block-jetpack-gif.alignleft,.wp-block-jetpack-gif.alignright{min-width:300px}.wp-block-jetpack-gif .wp-block-jetpack-gif-caption{margin-top:.5em;margin-bottom:1em;color:#555d66;text-align:center}.wp-block-jetpack-gif .wp-block-jetpack-gif-wrapper{height:0;margin:0;padding:calc(56.2% + 12px) 0 0;position:relative;width:100%}
+

@@ -411,19 +411,24 @@ class CustomOrderInstructions extends React.Component{
 }
 
 class StoreOptions extends React.Component{
+
+    componentDidMount(){
+        console.log(this.props.PageHeight)
+    }
+
+
     render(){
+
+        let PageHeight = this.props.PageHeight; 
+
         var grid = this.props.orientation === "landscape" ? "col-6" : "col-12";
-        var height = this.props.orientation === "landscape" ? "75vh" : "35.5vh";
-        var margin = this.props.orientation === "landscape" ? "0vh" : "2vh";
+        var height = this.props.orientation === "landscape" ? `${PageHeight*.75}px` : `${PageHeight*.355}px`;
+        var margin = this.props.orientation === "landscape" ? "0px" : `${PageHeight*.02}px`;
         return(
-            <div className = "store-options" className = "row  d-flex  justify-content-center store-content-container"> 
+            <div className = "store-options row  d-flex  justify-content-center store-content-container"> 
                 <div className = {grid}>
                 <div  onClick = { e=>this.props.handleView(e,"catalog")} className = "store-content-step-description"
                         style = {{
-                            //  maxHeight: "75vh", 
-                            // display:"flex",
-                            // flexWrap:"wrap",
-                            // alignContent:"center", 
                             height:height,
                             marginBottom: margin,                               
                         }} >
@@ -571,6 +576,7 @@ _onTouchStart(e) {
 componentWillMount(){
     this.handleOrientation()
 }
+
 componentDidMount(){ 
 
     // listen for resize events and change viewport state to either portrait or landscape 
@@ -654,6 +660,12 @@ componentWillUnmount(){
     window.removeEventListener("resize",this.handleOrientation)
 }
 render(){
+
+    let pageHeight = this.props.PageHeight
+    let pageNumber = 3 ; 
+
+    let top = (pageHeight)  * (pageNumber + .85) +  30* (pageNumber) ; 
+
     var grid = this.state.orientation ==="landscape"? "col-4" : "col-12" ;
     var margin = this.props.isUserInteractingWithStore ? '0px' : '30px';
     return(
@@ -663,7 +675,8 @@ render(){
         :
         <div 
             id = "store"
-            className = "store-page page"
+            className = "store-page page" 
+            style={{minHeight:`${this.props.PageHeight}px`}}
             onTouchStart = {this._onTouchStart}
             onTouchMove =  {this._onTouchMove}
             onTouchEnd = {this._onTouchEnd}
@@ -688,13 +701,14 @@ render(){
               
                <div className = "container-fluid"
                
-            //    style = {{paddingTop:"80px"}}
+            
                >   
                 {(this.props.viewCatalog===false && this.props.viewCustom===false) 
 
                 ? 
                 
                 <StoreOptions 
+                PageHeight = {this.props.PageHeight}
                 handleView = {this.props.handleView} 
                 orientation = {this.state.orientation}
                 /> 
@@ -746,7 +760,10 @@ render(){
           :
           <div className = "row d-flex justify-content-center">
           
-            <div className = "down store" onClick ={(e) => this.props.downBtnScroll(e,'contact')}/>
+            <div 
+            style = {{top:`${top}px`}}
+            className = "down" 
+            onClick ={(e) => this.props.downBtnScroll(e,'contact')}/>
               
           </div>
           }

@@ -25,12 +25,14 @@ class Main extends React.Component{
             viewCatalog:false ,
             storeRef : Object,
             windowHeight : window.innerHeight,
+            PageHeight: null,            
             content : GALLERY,
             currentIndex: 1,
             inventory : [] , 
             postionOfStore : [] ,
             orientation :  "portrait",
             view:false
+
         }
         this.homePage=React.createRef(this.homePage);
         this.storePage = React.createRef(this.storePage);
@@ -45,7 +47,8 @@ class Main extends React.Component{
 
         handleOrientation(){
 
-            this.setState({windowHeight:window.innerHeight})
+            this.setState({windowHeight:window.outerHeight})
+            
 
             if (window.innerWidth >= window.innerHeight) {
                 this.setState({orientation:"landscape"}) 
@@ -98,10 +101,8 @@ class Main extends React.Component{
 
         handleScrollableFocus(){
            
-            // window.scrollTo(0, window.innerHeight*3 + 90,)
             var storePage = document.getElementById('store');
 
-             
             storePage.scrollIntoView({behavior:'smooth'});
            
         }
@@ -133,12 +134,16 @@ class Main extends React.Component{
     
 
         componentDidMount(){
-            window.addEventListener("resize",this.handleOrientation)       
-
-            
-            
+            window.addEventListener("resize",this.handleOrientation) 
+            this.setState({PageHeight:window.innerHeight+80}); 
+                       
         }
 
+ 
+
+   
+      
+ 
       
 render(){
 
@@ -146,7 +151,7 @@ render(){
         <React.Fragment>
  
         <Home 
-        windowHeight = {this.state.windowHeight}
+        windowHeight = {this.state.PageHeight}
         handleView = {this.handleView}
         isUserInteractingWithStore = {this.state.isUserInteractingWithStore}
         isUserInteractingWithBlog = {this.state.isUserInteractingWithBlog}
@@ -154,12 +159,14 @@ render(){
         />
     
         <About
+        windowHeight = {this.state.PageHeight}
         isUserInteractingWithStore = {this.state.isUserInteractingWithStore}
         isUserInteractingWithBlog = {this.state.isUserInteractingWithBlog}
         downBtnScroll = {this.downBtnScroll}
         />
         
         <Gallery 
+        windowHeight = {this.state.PageHeight}
         className = "gallery-page"
         isUserInteractingWithStore = {this.state.isUserInteractingWithStore} 
         isUserInteractingWithGalery = {this.state.isUserInteractingWithGalery} 
@@ -176,6 +183,9 @@ render(){
         /> */}
        
        <Store 
+
+        PageHeight = {this.state.PageHeight}
+        
         ref = {this.storePage}
         isUserInteractingWithStore = {this.state.isUserInteractingWithStore} 
 
@@ -192,12 +202,15 @@ render(){
         />
  
         <Contact
+        PageHeight = {this.state.PageHeight}
         isUserInteractingWithStore = {this.state.isUserInteractingWithStore}
         isUserInteractingWithBlog = {this.state.isUserInteractingWithBlog}
         downBtnScroll = {this.downBtnScroll}
         />
         
         <CheckOut
+        
+        PageHeight = {this.state.PageHeight}
         isUserInteractingWithBlog = {this.state.isUserInteractingWithBlog}
         />
 

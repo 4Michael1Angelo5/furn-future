@@ -1,0 +1,381 @@
+.custom-order-app{
+    min-height: 100vh;
+}
+
+.custom-order-app .brk-btn{
+    // position: absolute;
+    // top:400vh ; 
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.custom-order-nav{
+    // padding:10px 0px; 
+    background-color: #bbbbb6;
+}
+
+.custom-order-nav-item{
+    text-align: center;
+    transition: .5s ease-in-out;
+    font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";  
+    padding:10px 0px;
+    background-color: #bbbbb6;
+    cursor: pointer;
+}
+
+
+.custom-order-nav-item:active{
+    box-shadow:  inset 0 0 10px #000000;
+}
+
+.custom-order-nav-item:focus{
+    box-shadow:  inset 0 0 10px #000000;
+}
+
+
+.custom-order-progress-bar{
+    width:20%; 
+    height: 44px;
+    border-bottom: 5px solid #7bb7e4;
+    background-color: #383d416e;
+    transition: .5s ease-in-out;
+    margin-bottom: .5rem;
+    padding: 0px 15px ; 
+    position: absolute;
+    
+}
+
+.custom-order-nav-item ::before{
+
+    background-color: red;
+}
+
+
+// select Series
+
+.series-pic-frame{
+    height:20vh ; 
+    margin-left:10px;
+
+}
+
+.series-pic-frame img{
+    height:100%;
+    object-fit: cover;
+}
+
+.series-description{
+    display: flex;
+    align-items: center;
+    margin:2px 5px 2px 0px
+}
+
+.series-title{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+// Select Slab
+
+.slab-frame{
+    height:25vh ; 
+
+}
+
+.slab-frame img{
+    height:100%;
+    object-fit: cover;
+}
+.ammo-belt{
+    background-color: #cbcbcc;;
+}
+
+.ammo{
+    width:100% ; 
+    height:100% ; 
+}
+
+.ammo img{
+    height:100%;
+    object-fit: cover !important;
+    
+}
+
+.slab-name{
+    padding-left: 15px;
+    font-weight: 500;
+}
+
+// select Cut
+
+.custom-product-price{
+    padding-right: 15px;
+    font-weight: 500;
+}
+
+
+.slab-stats-list{
+    // padding: 5px 25px;
+    list-style: none;
+}
+
+ 
+.spec-unit-label{
+    display: block;
+    font-size: 17px;
+    color:  #312f2f
+    
+}
+
+.spec-unit-inches{
+    font-weight: 100;
+}
+
+.spec-value{
+    font-size: 2rem;
+    font-family: var(--tds-sans-font_stack--book);
+
+}
+
+.spec-name{
+ border-bottom: 1px solid black;
+}
+
+.stats-container{
+    margin-bottom: .5rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #aba7a7;
+}
+
+.active-cut-frame{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    height:30vh;
+    background-color: #cbcbcc;
+
+}
+
+.active-cut-frame img{
+    object-fit: contain;
+}
+
+.cut-gallery img{
+    background-color:#d8d8d1bd;
+    object-fit: contain;
+}
+
+// select Finish
+
+.finish-title{
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.finish-btn{
+    width: 2.5rem;
+    height:2.5rem;
+    border-radius: 100%;
+    background-color: #edeff0;
+    margin: 2px 5px;
+    box-shadow:  0px 3px 8px #2b1a1a, inset 0px 2px 3px #fff
+
+}
+
+.select-finish-btn-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:.7rem 0rem  1rem;
+}
+
+.finish-image-container{
+    display:flex;
+    justify-content: center;
+}
+
+.hardware-gallery img{
+object-fit: cover;
+}
+
+.hardware-ammo{
+    height:100%
+}
+.hardware-item img{
+    height:70%;
+    object-fit: cover;
+}
+
+.hardware-item-name{
+    height:3rem;
+    line-height: 1.2;
+    display:flex;
+    align-items: center;
+}
+
+.gallery-modal{
+    max-width: 900px !important;
+    min-width: 278px !important;
+}
+
+.gallery-modal img {
+    object-fit: contain;
+ 
+}
+
+.loading-container{
+    height: calc(100vh - 44px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-container .lds-ellipsis{
+    transform: scale(1.5);
+}
+
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: rgb(60, 94, 156);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
+
+.cart-sucess{
+
+    background-color:rgba(212, 37, 37, 0.6313725490196078);
+    backdrop-filter: blur(2px);
+    position: absolute; 
+    z-index: 1000;
+    border-radius: 25px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.89);
+    transform: translateX(120%);
+    display: none;   
+
+}
+
+.cart-sucess img{
+    padding:1px;
+    transform:scaleX(-1);
+    
+}
+
+.slide-in-out{
+    display: block;
+    animation-name: slide-in-out;
+    animation-duration: 2s;
+}
+
+@keyframes slide-in-out {
+    0%{
+        transform: translateX(120%)
+    }
+    10%{
+        transform: translateX(80%)
+    }
+    90%{
+        transform: translateX(80%);
+    }
+    100%{
+        transform: translateX((120%))
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+
+
+.cart-badge{
+    position: absolute;
+    border: 1px solid white;
+    width: 29px;
+    text-align: center;
+    border-radius: 5px;
+    height: 25px;
+    font-weight: 700;
+    color: white; 
+    top: -16px; 
+    z-index: 10;
+    background: steelblue;
+}
+
+.attention-seeker{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    animation-delay: .5s;
+}
+
+
+
+
+
+ 
