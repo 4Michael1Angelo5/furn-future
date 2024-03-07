@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/furn-future/static/css/main.dcdd9441.chunk.css",
-    "main.js": "/furn-future/static/js/main.751bd7bb.chunk.js",
-    "main.js.map": "/furn-future/static/js/main.751bd7bb.chunk.js.map",
+    "main.css": "/furn-future/static/css/main.f9cf4748.chunk.css",
+    "main.js": "/furn-future/static/js/main.fbc72872.chunk.js",
+    "main.js.map": "/furn-future/static/js/main.fbc72872.chunk.js.map",
     "runtime-main.js": "/furn-future/static/js/runtime-main.467e271b.js",
     "runtime-main.js.map": "/furn-future/static/js/runtime-main.467e271b.js.map",
-    "static/css/2.c6fda9f8.chunk.css": "/furn-future/static/css/2.c6fda9f8.chunk.css",
-    "static/js/2.8237d509.chunk.js": "/furn-future/static/js/2.8237d509.chunk.js",
-    "static/js/2.8237d509.chunk.js.map": "/furn-future/static/js/2.8237d509.chunk.js.map",
+    "static/css/2.dc713260.chunk.css": "/furn-future/static/css/2.dc713260.chunk.css",
+    "static/js/2.2fe3a7e9.chunk.js": "/furn-future/static/js/2.2fe3a7e9.chunk.js",
+    "static/js/2.2fe3a7e9.chunk.js.map": "/furn-future/static/js/2.2fe3a7e9.chunk.js.map",
     "index.html": "/furn-future/index.html",
-    "precache-manifest.b1b9225910f0bdcabf7ff8665634b264.js": "/furn-future/precache-manifest.b1b9225910f0bdcabf7ff8665634b264.js",
+    "precache-manifest.00412b11a798683046e8b324d0925494.js": "/furn-future/precache-manifest.00412b11a798683046e8b324d0925494.js",
     "service-worker.js": "/furn-future/service-worker.js",
-    "static/css/2.c6fda9f8.chunk.css.map": "/furn-future/static/css/2.c6fda9f8.chunk.css.map",
-    "static/css/main.dcdd9441.chunk.css.map": "/furn-future/static/css/main.dcdd9441.chunk.css.map",
+    "static/css/2.dc713260.chunk.css.map": "/furn-future/static/css/2.dc713260.chunk.css.map",
+    "static/css/main.f9cf4748.chunk.css.map": "/furn-future/static/css/main.f9cf4748.chunk.css.map",
     "static/media/blogComponent.scss": "/furn-future/static/media/TitilliumWeb-Light.edc21ba4.ttf",
     "static/media/App.css": "/furn-future/static/media/TitilliumWeb-Regular.ed1d014b.ttf",
     "static/media/cart.png": "/furn-future/static/media/cart.46ea0b0a.png",
@@ -25,9 +25,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.467e271b.js",
-    "static/css/2.c6fda9f8.chunk.css",
-    "static/js/2.8237d509.chunk.js",
-    "static/css/main.dcdd9441.chunk.css",
-    "static/js/main.751bd7bb.chunk.js"
+    "static/css/2.dc713260.chunk.css",
+    "static/js/2.2fe3a7e9.chunk.js",
+    "static/css/main.f9cf4748.chunk.css",
+    "static/js/main.fbc72872.chunk.js"
   ]
 }
